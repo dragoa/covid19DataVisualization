@@ -377,16 +377,40 @@ function drawGraph (id, dataset, deathOptionValue) {
 }
 
 drawGraph("#graph1", "/assets/data/graph1_1.csv", "new_deaths")
+drawGraph("#graph2", "/assets/data/graph2_1.csv", "new_deaths")
+drawGraph("#graph3", "/assets/data/graph3_1.csv", "new_deaths")
 
 function handlePaymentChange(event) {
+    const wave = event.target.id
     const deathOptionValue = event.target.value;
-    console.log(deathOptionValue)
-    if(deathOptionValue === "new_deaths")
-        drawGraph("#graph1", "/assets/data/graph1_1.csv", deathOptionValue)
-    else if(deathOptionValue === "new_deaths_density")
-        drawGraph("#graph1", "/assets/data/graph1_2.csv", deathOptionValue)
-    else if(deathOptionValue === "new_deaths_per_million")
-        drawGraph("#graph1", "/assets/data/graph1_3.csv", deathOptionValue)
-    else
-        drawGraph("#graph1", "/assets/data/graph1_1.csv", "new_deaths")
+
+    if(wave === "wave1")
+        if(deathOptionValue === "new_deaths")
+            drawGraph("#graph1", "/assets/data/graph1_1.csv", deathOptionValue)
+        else if(deathOptionValue === "new_deaths_density")
+            drawGraph("#graph1", "/assets/data/graph1_2.csv", deathOptionValue)
+        else if(deathOptionValue === "new_deaths_per_million")
+            drawGraph("#graph1", "/assets/data/graph1_3.csv", deathOptionValue)
+        else
+            drawGraph("#graph1", "/assets/data/graph1_1.csv", "new_deaths")
+    else if(wave === "wave2")
+        if(deathOptionValue === "new_deaths")
+            drawGraph("#graph2", "/assets/data/graph2_1.csv", deathOptionValue)
+        else if(deathOptionValue === "new_deaths_density")
+            drawGraph("#graph2", "/assets/data/graph2_2.csv", deathOptionValue)
+        else if(deathOptionValue === "new_deaths_per_million")
+            drawGraph("#graph2", "/assets/data/graph2_3.csv", deathOptionValue)
+        else
+            drawGraph("#graph2", "/assets/data/graph2_1.csv", "new_deaths")
+    else if(wave === "wave3")
+        if(deathOptionValue === "new_deaths")
+            drawGraph("#graph3", "/assets/data/graph3_1.csv", deathOptionValue)
+        else if(deathOptionValue === "new_deaths_density")
+            drawGraph("#graph3", "/assets/data/graph3_2.csv", deathOptionValue)
+        else if(deathOptionValue === "new_deaths_per_million")
+            drawGraph("#graph3", "/assets/data/graph3_3.csv", deathOptionValue)
+        else
+            drawGraph("#graph3", "/assets/data/graph3_1.csv", "new_deaths")
+
+
 }

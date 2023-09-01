@@ -151,34 +151,245 @@
         </div>
     </section>
 
-    <!-- Barplot -->
-    <section class="features-icons bg-light text-center">
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="col-lg-11">
-                    <h3>First Wave: When the covid arrived</h3>
-                </div>
-                <div class="col-lg-12">
-                    <div class="d-flex justify-content-center">
-                        <label hidden="hidden" for="selectDeathOptions">Select option for new deaths</label>
-                        <select class="btn btn-light" autocomplete="off" id="selectDeathOptions" required onchange="handlePaymentChange(event)">
-                            <option value="new_deaths" selected>Deaths per day</option>
-                            <option value="new_deaths_density">Deaths per density of population per day</option>
-                            <option value="new_deaths_per_million">Deaths per million per day</option>
-                        </select>
+    <!-- Barplot First Wave -->
+    <div id="first_wave">
+        <section class="features-icons bg-light text-center">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-11">
+                        <h3>First Wave: When the covid arrived</h3>
                     </div>
-                    <div id="graph1"></div>
+                    <div class="col-lg-12">
+                        <div class="d-flex justify-content-center">
+                            <label hidden="hidden" for="wave1">Select option for new deaths</label>
+                            <select class="btn btn-outline-success shadow-none" autocomplete="off" id="wave1" required onchange="handlePaymentChange(event)">
+                                <option value="new_deaths" selected>Deaths per day</option>
+                                <option value="new_deaths_density">Deaths per density of population per day</option>
+                                <option value="new_deaths_per_million">Deaths per million per day</option>
+                            </select>
+                        </div>
+                        <div id="graph1"></div>
+                    </div>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-11">
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-outline-success shadow-none" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Looking at the graphs:
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-6">
+                                                <p>The best 10 results of daily deaths per density of population with the correspondent month for the 1st wave.</p>
+                                                <ul class="intro">
+                                                    <li>Poland 13.16 MAR</li>
+                                                    <li>Netherlands 12.13 FEB</li>
+                                                    <li>Austria 7.72 FEB</li>
+                                                    <li>Hungary 5.56 MAR</li>
+                                                    <li>Bulgaria 4.86 MAR</li>
+                                                    <li>Denmark 4.45 FEB</li>
+                                                    <li><b>Czechia</b> 2.67 MAR</li>
+                                                    <li><b>Greece</b> 2.37 FEB</li>
+                                                    <li><b>Croatia</b> 1.68 FEB</li>
+                                                    <li><b>Slovakia</b> 0.25 MAR</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <p>The best 10 results of daily deaths per million of population with the correspondent month for the 1st wave.</p>
+                                                <ul class="intro">
+                                                    <li>Romania 103.67 FEB</li>
+                                                    <li>Austria 92.97 FEB</li>
+                                                    <li>Hungary 59.80 MAR</li>
+                                                    <li><b>Finland</b> 55.76 JAN</li>
+                                                    <li>Bulgaria 45.40 MAR</li>
+                                                    <li>Poland 40.82 MAR</li>
+                                                    <li><b>Czechia</b> 35.16 MAR</li>
+                                                    <li><b>Croatia</b> 30.26 FEB</li>
+                                                    <li><b>Greece</b> 18.78 FEB</li>
+                                                    <li><b>Slovakia</b> 4.96 MAR</li>
+                                                </ul><br>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <h5>Which are the top five countries of the 1st wave?</h5>
+                                                <p>
+
+                                                    For sure <u>Slovakia</u> has the best result even if Covid-19 started in March.
+                                                    Then <u>Greece</u> and <u>Croatia</u> (even more because they started in February).
+                                                    Then we think <u>Finland</u> can have a place in our top 5, because it's the only one started
+                                                    in January that is present in the second list.<br>
+                                                    The last one to consider is <u>Czechia</u> that did better than Poland and Bulgaria, and has a big
+                                                    gap with Austria that started in February.<br>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Map -->
+        </section>
+    </div>
+
+    <!-- Barplot Second Wave -->
+    <div id="second_wave">
+        <section class="features-icons bg-light text-center">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-11">
+                        <h3>Second Wave: When vaccines arrived</h3>
+                        <p>Now we will see if the sames countries will be in our top 5 or not...</p>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="d-flex justify-content-center">
+                            <label hidden="hidden" for="wave2">Select option for new deaths</label>
+                            <select class="btn btn-outline-success shadow-none" autocomplete="off" id="wave2" required onchange="handlePaymentChange(event)">
+                                <option value="new_deaths" selected>Deaths per day</option>
+                                <option value="new_deaths_density">Deaths per density of population per day</option>
+                                <option value="new_deaths_per_million">Deaths per million per day</option>
+                            </select>
+                        </div>
+                        <div id="graph2"></div>
+                    </div>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-11">
+                        <div id="accordion2">
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-outline-success shadow-none" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                            Looking at the graphs:
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion2">
+                                    <div class="card-body">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-6">
+                                                <p>The best 10 results of daily deaths per density of population for the 2nd wave.</p>
+                                                <ul class="intro">
+                                                    <li>*Greece 152.83</li>
+                                                    <li>Portugal 136.81</li>
+                                                    <li>Austria 114.01</li>
+                                                    <li>Slovakia 111.53</li>
+                                                    <li>Croatia 111.36</li>
+                                                    <li><b>Ireland</b> 45.40</li>
+                                                    <li><b>*Belgium</b> 41.12</li>
+                                                    <li><b>Finland</b> 37.20</li>
+                                                    <li><b>Netherlands</b> 23.00 </li>
+                                                    <li><b>Denmark</b> 13.92</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <p>The best 10 results of daily deaths per million of population for the 2°wave.</p>
+                                                <ul class="intro">
+                                                    <li><b>*Belgium</b> 1331.09</li>
+                                                    <li>*Greece 1212.61</li>
+                                                    <li>France 1198.61</li>
+                                                    <li>Spain 1105.68</li>
+                                                    <li>Germany 984.94</li>
+                                                    <li>Sweden 857.31</li>
+                                                    <li><b>Netherlands</b> 664.20</li>
+                                                    <li><b>Ireland</b> 649.78</li>
+                                                    <li><b>Denmark</b> 327.76</li>
+                                                    <li><b>Finland</b> 122.14</li>
+                                                </ul><br>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <h5>Which are the top five countries of the 1st wave?</h5>
+                                                <p>
+                                                    For sure <u>Finland</u>, <u>Denmark</u>, <u>Ireland</u> and <u>Netherlands</u> has the best results for that 2° wave. <br>
+                                                    Then we have to decide between Belgium* and Greece* that are the last in both of the lists. <br>
+                                                    We think that <u>Belgium</u> has nice ranking in the first list, so we choose it as our last one.<br>
+                                                    Notice that surprisingly only the Finland is still in the top 5.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Barplot Third Wave -->
+    <div id="third_wave">
+        <section class="features-icons bg-light text-center">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-11">
+                        <h3>Third Wave: When countries were adapted</h3>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="d-flex justify-content-center">
+                            <label hidden="hidden" for="wave3">Select option for new deaths</label>
+                            <select class="btn btn-outline-success shadow-none" autocomplete="off" id="wave3" required onchange="handlePaymentChange(event)">
+                                <option value="new_deaths" selected>Deaths per day</option>
+                                <option value="new_deaths_density">Deaths per density of population per day</option>
+                                <option value="new_deaths_per_million">Deaths per million per day</option>
+                            </select>
+                        </div>
+                        <div id="graph3"></div>
+                    </div>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-11">
+                        <div id="accordion3">
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-outline-success shadow-none" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                            Looking at the graphs:
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion3">
+                                    <div class="card-body">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-6">
+                                                <p>Here we can see that...</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
     <script src="https://d3js.org/d3.v6.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // This code initializes the accordion functionality
+            $('#collapseOne').collapse();
+            $('#collapseTwo').collapse();
+            $('#collapseThree').collapse();
+        });
+    </script>
     <script src="barplot/script1.js"></script>
 
 </body>
