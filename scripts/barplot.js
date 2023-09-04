@@ -1,4 +1,4 @@
-$(document).ready(function () {
+function drawGraph (id, dataset) {
 
 // set the dimensions and margins of the graph
     const margin = {top: 100, right: 40, bottom: 170, left: 150},
@@ -6,7 +6,7 @@ $(document).ready(function () {
         height = 450 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-    const svg = d3.select("#graph2_A_1_container")
+    const svg = d3.select(id)
         .append("svg")
         .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
         .attr("preserveAspectRatio", "xMidYMid meet")
@@ -14,7 +14,7 @@ $(document).ready(function () {
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
 // Parse the Data
-    d3.csv("./assets/data/graph2_A_average1.csv").then(function (data) {
+    d3.csv(dataset).then(function (data) {
 
         // List of subgroups = header of the csv files = soil condition here
         const subgroups = data.columns.slice(1)
@@ -158,13 +158,15 @@ $(document).ready(function () {
 
         // Draw legend text and values
         legend.append("text")
-            .attr("x", +330)
+            .attr("x", +50)
             .attr("y", 9)
             .attr("dy", ".35em")
-            .style("text-anchor", "end")
+            .style("text-anchor", "left")
             .text(function (d) { return "percentage " + d.key.split("_")[0]+" "+d.key.split("_")[1]+" "+d.key.split("_")[2]; })
             .attr("class",function (d) { return "rect_" + d.key; })
             .style("fill", d => color(d.key))
     })
-})
+}
 
+drawGraph("#barplot1", "./assets/data/barplot/average_1.csv")
+// drawGraph("#barplot2", "./assets/data/barplot/average_2.csv")

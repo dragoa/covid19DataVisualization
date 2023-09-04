@@ -686,13 +686,14 @@ progress {
 }
 
 #map1{
-    margin-right: 5rem;
-    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 
 #map1 svg{
-    width: 650px;
-    height: 850px;
+
 }
 
 .col {
