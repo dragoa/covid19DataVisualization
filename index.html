@@ -393,6 +393,22 @@
         </section>
     </div>
 
+    <!-- Map -->
+    <section class="features-icons bg-light text-center">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-lg-11">
+                    <select class="btn btn-light" autocomplete="off" id="selectMapOption" required onchange="handlePaymentChange(event)">
+                        <option value="average_stringency_index" selected>Stringency</option>
+                        <option value="average_containment_index">Containement</option>
+                    </select>
+                    <div id="map1"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Barplot 2st Wave-->
     <div id="analysis2">
         <section class="features-icons bg-light text-center">
@@ -457,6 +473,6 @@
     </script>
     <script src="scripts/linechart.js"></script>
     <script src="scripts/barplot.js"></script>
-
+    <script src="scripts/map.js"></script>
 </body>
 </html>
