@@ -1,4 +1,6 @@
 function drawGraph (id, dataset) {
+    // Clear the previous graph elements
+    d3.select(id).selectAll("svg").remove();
 
 // set the dimensions and margins of the graph
     const margin = {top: 100, right: 40, bottom: 170, left: 150},
@@ -170,3 +172,16 @@ function drawGraph (id, dataset) {
 
 drawGraph("#barplot1", "./assets/data/barplot/average_1.csv")
 // drawGraph("#barplot2", "./assets/data/barplot/average_2.csv")
+
+function handlePaymentChange(event) {
+    const wave = event.target.id
+
+    if(wave === "flexRadio1")
+        drawGraph("#barplot1", "/assets/data/barplot/average_1.csv")
+    else if(wave === "flexRadio2")
+        drawGraph("#barplot1", "/assets/data/barplot/average_2.csv")
+    else if(wave === "flexRadio3")
+        drawGraph("#barplot1", "/assets/data/barplot/average_3.csv")
+    else
+        drawGraph("#barplot1", "/assets/data/barplot/average_1.csv")
+}

@@ -386,6 +386,24 @@
                         <p>In July 2022 the OxCGRT implemented data changes which incorporate different policies applying to vaccinated and non-vaccinated people.
                             <br>We now publish eight versions of each index, including versions that take averages between the policies that apply to vaccinated and
                             non-vaccinated people.</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio1" checked onchange="handlePaymentChange(event)">
+                            <label class="form-check-label" for="flexRadio1">
+                                1st Wave
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio2" onchange="handlePaymentChange(event)">
+                            <label class="form-check-label" for="flexRadio2">
+                                2nd wave
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio3" onchange="handlePaymentChange(event)">
+                            <label class="form-check-label" for="flexRadio3">
+                                3nd wave
+                            </label>
+                        </div>
                         <div id="barplot1" class="hidden-left mb-3 graph"></div>
                     </div>
                 </div>
@@ -398,10 +416,6 @@
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-lg-11">
-                    <select class="btn btn-light" autocomplete="off" id="selectMapOption" required onchange="handlePaymentChange(event)">
-                        <option value="average_stringency_index" selected>Stringency</option>
-                        <option value="average_containment_index">Containement</option>
-                    </select>
                     <div id="map1"></div>
                 </div>
             </div>
@@ -409,24 +423,7 @@
     </section>
 
 
-    <!-- Barplot 2st Wave-->
-    <div id="analysis2">
-        <section class="features-icons bg-light text-center">
-            <div class="container">
-                <div class="row justify-content-md-center">
-                    <div class="col-lg-11">
-                        <h3>Analysis: Which factors are used by the top 5 countries?</h3>
-                    </div>
-                    <div class="col-lg-11">
-                        <p>In July 2022 the OxCGRT implemented data changes which incorporate different policies applying to vaccinated and non-vaccinated people.
-                            <br>We now publish eight versions of each index, including versions that take averages between the policies that apply to vaccinated and
-                            non-vaccinated people.</p>
-                        <div id="barplot2" class="hidden-left mb-3 graph"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+
 
 
 

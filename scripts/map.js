@@ -77,7 +77,7 @@ function drawMap(id, dataset, colorMap, year){
                 let tooltipText;
                 console.log(percValue)
                 if (percValue !== 0 && percValue) {
-                    tooltipText = "The " + year.replace(/_/g, " ") + "<br> is " + percValue + "%";
+                    tooltipText = "The policies adopted <br>were " + percValue + "% strict";
                 } else if (isNaN(percValue)){
                     tooltipText = "Missing data";
                 }
@@ -101,9 +101,5 @@ function drawMap(id, dataset, colorMap, year){
     })
 }
 
-drawMap("#map1", "assets/data/map/merged_data.csv", d => d3.interpolateOrRd(d / 100), "average_stringency_index")
+drawMap("#map1", "assets/data/map/merged_data.csv", d => d3.interpolateOrRd(d / 100), "ratio")
 
-function handlePaymentChange(event) {
-    var selectMapOption = event.target.value;
-    drawMap("#map1", "assets/data/map/merged_data.csv", d => d3.interpolateOrRd(d/100), selectMapOption)
-}
