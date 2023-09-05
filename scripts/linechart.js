@@ -380,9 +380,11 @@ drawGraph("#graph1", "/assets/data/linechart/graph1_1.csv", "new_deaths")
 drawGraph("#graph2", "/assets/data/linechart/graph2_1.csv", "new_deaths")
 drawGraph("#graph3", "/assets/data/linechart/graph3_1.csv", "new_deaths")
 
-function handlePaymentChange(event) {
+function handlePaymentChange1(event) {
     const wave = event.target.id
     const deathOptionValue = event.target.value;
+
+    console.log(deathOptionValue)
 
     if(wave === "wave1")
         if(deathOptionValue === "new_deaths")

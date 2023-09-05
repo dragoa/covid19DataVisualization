@@ -162,7 +162,7 @@
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-center">
                             <label hidden="hidden" for="wave1">Select option for new deaths</label>
-                            <select class="btn btn-outline-success shadow-none" autocomplete="off" id="wave1" required onchange="handlePaymentChange(event)">
+                            <select class="btn btn-outline-success shadow-none" autocomplete="off" id="wave1" required onchange="handlePaymentChange1(event)">
                                 <option value="new_deaths" selected>Deaths per day</option>
                                 <option value="new_deaths_density">Deaths per density of population per day</option>
                                 <option value="new_deaths_per_million">Deaths per million per day</option>
@@ -251,7 +251,7 @@
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-center">
                             <label hidden="hidden" for="wave2">Select option for new deaths</label>
-                            <select class="btn btn-outline-success shadow-none" autocomplete="off" id="wave2" required onchange="handlePaymentChange(event)">
+                            <select class="btn btn-outline-success shadow-none" autocomplete="off" id="wave2" required onchange="handlePaymentChange1(event)">
                                 <option value="new_deaths" selected>Deaths per day</option>
                                 <option value="new_deaths_density">Deaths per density of population per day</option>
                                 <option value="new_deaths_per_million">Deaths per million per day</option>
@@ -336,7 +336,7 @@
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-center">
                             <label hidden="hidden" for="wave3">Select option for new deaths</label>
-                            <select class="btn btn-outline-success shadow-none" autocomplete="off" id="wave3" required onchange="handlePaymentChange(event)">
+                            <select class="btn btn-outline-success shadow-none" autocomplete="off" id="wave3" required onchange="handlePaymentChange1(event)">
                                 <option value="new_deaths" selected>Deaths per day</option>
                                 <option value="new_deaths_density">Deaths per density of population per day</option>
                                 <option value="new_deaths_per_million">Deaths per million per day</option>
@@ -423,19 +423,19 @@
                             <br>We now publish eight versions of each index, including versions that take averages between the policies that apply to vaccinated and
                             non-vaccinated people.</p>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio1" checked onchange="handlePaymentChange(event)">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio1" checked onchange="handlePaymentChange2(event)">
                             <label class="form-check-label" for="flexRadio1">
                                 1st Wave
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio2" onchange="handlePaymentChange(event)">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio2" onchange="handlePaymentChange2(event)">
                             <label class="form-check-label" for="flexRadio2">
                                 2nd wave
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio3" onchange="handlePaymentChange(event)">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio3" onchange="handlePaymentChange2(event)">
                             <label class="form-check-label" for="flexRadio3">
                                 3nd wave
                             </label>
