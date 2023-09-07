@@ -29,10 +29,10 @@ function drawMap(id, dataset, colorMap, year){
             .translate([width / 2, height / 2])
 
         const color = colorMap
-        //Legend(d3.scaleThreshold([39, 100, 300, 500, 1000, 2000, 3024], d3.schemeGreens[8]), id)
+        // Legend(d3.scaleThreshold([0, 20, 40, 60, 80, 100], d3.schemeGreens[7]), id)
 
         let topo = loadData[0]
-        //projection.fitSize([width_1, height_1], topo);
+        // projection.fitSize([width, height], topo);
 
         //draw the map
         svg.append("g")
@@ -101,5 +101,17 @@ function drawMap(id, dataset, colorMap, year){
     })
 }
 
-drawMap("#map1", "assets/data/map/merged_data.csv", d => d3.interpolateOrRd(d / 100), "ratio")
+drawMap("#map1", "assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
 
+function handlePaymentChange2(event) {
+    const wave = event.target.id
+
+    if(wave === "flexRadio1")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
+    else if(wave === "flexRadio2")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency2.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
+    else if(wave === "flexRadio3")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency3.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
+    else
+        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
+}
