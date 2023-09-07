@@ -24,6 +24,9 @@ function Legend(color, id, {
         return canvas;
     }
 
+    // Clear the previous graph elements
+    d3.select(id).selectAll("svg").remove();
+
     const svg5 = d3.select(id)
         .append("svg")
         .attr("viewBox", '0 0 ' + (width + marginLeft + marginRight) +

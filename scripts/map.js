@@ -11,8 +11,8 @@ function drawMap(id, dataset, colorMap, year){
         })
     ]).then(function (loadData) {
 
-        var height = 670;
-        var width = document.documentElement.clientWidth / 2 - 150;
+        var height = 700;
+        var width = document.documentElement.clientWidth / 2;
 
         var mapId = document.getElementById(id.replace("#", ""))
         mapId.innerHTML = "";
@@ -24,7 +24,7 @@ function drawMap(id, dataset, colorMap, year){
 
         // projection reflecting the Y to match d3 requirements
         let projection = d3.geoMercator()
-            .center([7, 52])
+            .center([7, 56])
             .scale([width / 1.3])
             .translate([width / 2, height / 2])
 
@@ -106,12 +106,20 @@ drawMap("#map1", "assets/data/map/map_tot_stringency1.csv", d => d3.interpolateG
 function handlePaymentChange2(event) {
     const wave = event.target.id
 
-    if(wave === "flexRadio1")
+    if(wave === "flexRadio1"){
+        drawBarplot("#barplot", "/assets/data/barplot/average_1.csv")
         drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
-    else if(wave === "flexRadio2")
+    }
+    else if(wave === "flexRadio2"){
+        drawBarplot("#barplot", "/assets/data/barplot/average_2.csv")
         drawMap("#map1", "/assets/data/map/map_tot_stringency2.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
-    else if(wave === "flexRadio3")
+    }
+    else if(wave === "flexRadio3"){
+        drawBarplot("#barplot", "/assets/data/barplot/average_3.csv")
         drawMap("#map1", "/assets/data/map/map_tot_stringency3.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
-    else
+    }
+    else{
+        drawBarplot("#barplot", "/assets/data/barplot/average_1.csv")
         drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
+    }
 }

@@ -170,17 +170,4 @@ function drawBarplot (id, dataset) {
     })
 }
 
-drawBarplot("#barplot1", "./assets/data/barplot/average_1.csv")
-
-function handlePaymentChange2(event) {
-    const wave = event.target.id
-
-    if(wave === "flexRadio1")
-        drawBarplot("#barplot1", "/assets/data/barplot/average_1.csv")
-    else if(wave === "flexRadio2")
-        drawBarplot("#barplot1", "/assets/data/barplot/average_2.csv")
-    else if(wave === "flexRadio3")
-        drawBarplot("#barplot1", "/assets/data/barplot/average_3.csv")
-    else
-        drawBarplot("#barplot1", "/assets/data/barplot/average_1.csv")
-}
+drawBarplot("#barplot", "./assets/data/barplot/average_1.csv")
