@@ -11401,3 +11401,8 @@ footer.footer {
     margin: 0!important;
     display: block!important;
 }
+
+#legend_map{
+    margin: 0 !important;
+    padding: 0;
+}

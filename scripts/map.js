@@ -29,7 +29,7 @@ function drawMap(id, dataset, colorMap, year){
             .translate([width / 2, height / 2])
 
         const color = colorMap
-        // Legend(d3.scaleThreshold([0, 20, 40, 60, 80, 100], d3.schemeGreens[7]), id)
+        Legend(d3.scaleThreshold([0, 20, 40, 60, 80, 100], d3.schemeGreens[7]), "#legend_map")
 
         let topo = loadData[0]
         // projection.fitSize([width, height], topo);

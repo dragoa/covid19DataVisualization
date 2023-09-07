@@ -1,12 +1,12 @@
 function Legend(color, id, {
     title,
     tickSize = 1,
-    width = 200,
-    height = 30 + tickSize,
-    marginTop = 12,
-    marginRight = 30,
-    marginBottom = 16 + tickSize,
-    marginLeft = 30,
+    width = 350,
+    height = 22 + tickSize,
+    marginTop = 0,
+    marginRight = 50,
+    marginBottom = 20 + tickSize,
+    marginLeft = 50,
     ticks = width / 6,
     tickFormat,
     tickValues
