@@ -107,19 +107,21 @@ function handlePaymentChange2(event) {
     const wave = event.target.id
 
     if(wave === "flexRadio1"){
-        drawBarplot("#barplot", "/assets/data/barplot/average_1.csv")
+        drawBarplot("#barplot1", "/assets/data/barplot/average_1.csv")
         drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
     }
     else if(wave === "flexRadio2"){
-        drawBarplot("#barplot", "/assets/data/barplot/average_2.csv")
+        drawBarplot("#barplot1", "/assets/data/barplot/average_2.csv")
+        drawBarplot("#barplot2", "./assets/data/vaccine/pop_vaccinated_2.csv")
         drawMap("#map1", "/assets/data/map/map_tot_stringency2.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
     }
     else if(wave === "flexRadio3"){
-        drawBarplot("#barplot", "/assets/data/barplot/average_3.csv")
+        drawBarplot("#barplot1", "/assets/data/barplot/average_3.csv")
         drawMap("#map1", "/assets/data/map/map_tot_stringency3.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
+        drawBarplot("#barplot2", "./assets/data/vaccine/pop_vaccinated_3.csv")
     }
     else{
-        drawBarplot("#barplot", "/assets/data/barplot/average_1.csv")
+        drawBarplot("#barplot1", "/assets/data/barplot/average_1.csv")
         drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
     }
 }

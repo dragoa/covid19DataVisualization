@@ -170,4 +170,4 @@ function drawBarplot (id, dataset) {
     })
 }
 
-drawBarplot("#barplot", "./assets/data/barplot/average_1.csv")
+drawBarplot("#barplot1", "./assets/data/barplot/average_1.csv")
