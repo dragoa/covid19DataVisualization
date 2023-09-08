@@ -3,7 +3,7 @@ function drawMap(id, dataset, colorMap, year){
     const map = new Map();
     colorMap = d3.scaleLinear()
         .domain([0, 20, 40, 60, 80])
-        .range(['lightgrey', '#FF3A20', "#F1FEC6", '#037971', '#023436']);
+        .range(['lightgrey', '#FFB17A', "#F1FEC6", '#037971', '#023436']);
 
     // load both geometric and aggregated data
     Promise.all([
