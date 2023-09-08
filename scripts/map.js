@@ -75,7 +75,7 @@ function drawMap(id, dataset, colorMap, year){
 
                 const percValue = Math.round(map.get(d.properties.name));
                 let tooltipText;
-                console.log(percValue)
+                // console.log(percValue)
                 if (percValue !== 0 && percValue) {
                     tooltipText = "The policies adopted <br>were " + percValue + "% strict";
                 } else if (isNaN(percValue)){
@@ -106,19 +106,19 @@ function handlePaymentChange2(event) {
     const wave = event.target.id
 
     if(wave === "flexRadio1"){
-        drawStackedBar("#barplot1", "/assets/data/barplot/average_1.csv")
+        drawStackedBar("#barplot1", "/assets/data/barplot/average_1.csv", "1st")
         drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d/100), "average_stringency_containment_index")
     }
     else if(wave === "flexRadio2"){
-        drawStackedBar("#barplot1", "/assets/data/barplot/average_2.csv")
+        drawStackedBar("#barplot1", "/assets/data/barplot/average_2.csv", "2nd")
         drawMap("#map1", "/assets/data/map/map_tot_stringency2.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
     }
     else if(wave === "flexRadio3"){
-        drawStackedBar("#barplot1", "/assets/data/barplot/average_3.csv")
+        drawStackedBar("#barplot1", "/assets/data/barplot/average_3.csv", "3rd")
         drawMap("#map1", "/assets/data/map/map_tot_stringency3.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
     }
     else{
-        drawStackedBar("#barplot1", "/assets/data/barplot/average_1.csv")
+        drawStackedBar("#barplot1", "/assets/data/barplot/average_1.csv", "1st")
         drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
     }
 }

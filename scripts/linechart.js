@@ -92,7 +92,7 @@ function drawGraph (id, dataset, deathOptionValue, wave) {
             .attr("y", -margin.top+30 / 2)
             .attr("text-anchor", "middle")
             .style("font-size", "20px")
-            .text(`${wave} wave: ${deathOptionValue} due to Covid-19 in the European Union's countries`)
+            .text(`${wave} wave: ${deathOptionValue.replace(/_/g, ' ')} due to Covid-19 in the European Union's countries`)
             .style("font-weight", "bold")
             .style("font-family", "Fira Sans");
 
@@ -102,7 +102,7 @@ function drawGraph (id, dataset, deathOptionValue, wave) {
             .map(([key, values]) => ({ key, values }));
 
         // Set the color scale
-        const colors = [ "#dbdb8d", "#17becf", "#9edae5",  "#5254a3", "#6b6ecf", "#9c9ede" ,"#f7b6d2", "#bcbd22", "#e377c2", "#393b79","#e7ba52", "#1f77b4", "#637939", "#8ca252","#2ca02c", "#b5cf6b", "#8c6d31", "#bd9e39", "#aec7e8", "#ff7f0e", "#ffbb78", "#98df8a",  "#ff9896", "#9467bd", "#c5b0d5","#d62728", "#8c564b", "#c49c94", "#7f7f7f"];
+        const colors = ["#dbdb8d", "#17becf", "#9edae5", "#5254a3", "#6b6ecf", "#9c9ede" ,"#f7b6d2", "#bcbd22", "#e377c2", "#393b79","#e7ba52", "#1f77b4", "#637939", "#8ca252","#2ca02c", "#b5cf6b", "#8c6d31", "#bd9e39", "#aec7e8", "#ff7f0e", "#ffbb78", "#98df8a",  "#ff9896", "#9467bd", "#c5b0d5","#d62728", "#8c564b", "#c49c94", "#7f7f7f"];
         const color = d3.scaleOrdinal().range(colors);
 
         const greyOut = function (){

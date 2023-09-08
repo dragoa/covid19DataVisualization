@@ -1,13 +1,13 @@
-function drawStackedBar (id, dataset) {
+function drawStackedBar (id, dataset, wave) {
     // Clear the previous graph elements
     d3.select(id).selectAll("svg").remove();
 
-// set the dimensions and margins of the graph
+    // set the dimensions and margins of the graph
     const margin = {top: 100, right: 40, bottom: 170, left: 150},
         width = 1400 - margin.left - margin.right,
         height = 450 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
+    // append the svg object to the body of the page
     const svg = d3.select(id)
         .append("svg")
         .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
@@ -15,7 +15,7 @@ function drawStackedBar (id, dataset) {
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
-// Parse the Data
+    // Parse the Data
     d3.csv(dataset).then(function (data) {
 
         // List of subgroups = header of the csv files = soil condition here
@@ -52,6 +52,19 @@ function drawStackedBar (id, dataset) {
         const color = d3.scaleOrdinal()
             .domain(subgroups)
             .range(['#377eb8','#4daf4a'])
+
+        // add tooltip
+        const tooltip = d3.select("body")
+            .append("div")
+            .attr("class", "d3-tooltip")
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden")
+            .style("padding", "15px")
+            .style("background", "rgba(0,0,0,0.6)")
+            .style("border-radius", "5px")
+            .style("color", "#fff")
+            .text("a simple tooltip");
 
         const greyOut = function (){
             // Grey out the rest
@@ -105,7 +118,7 @@ function drawStackedBar (id, dataset) {
             .attr("y", -margin.top+35)
             .attr("text-anchor", "middle")
             .style("font-size", "20px")
-            .text("1st WAVE STACKED BARS 1: Top 5 countries of the first Covid-19 wave with their correspondent accumulated percentages of the ")
+            .text(`${wave} wave STACKED BARS: Top 5 countries of the first Covid-19 wave with their correspondent accumulated percentages of the `)
             .style("font-weight", "bold")
             .style("font-family", "Fira Sans");
 
@@ -136,14 +149,29 @@ function drawStackedBar (id, dataset) {
             .attr("x", d => x(d[0]))
             .attr("width", d => x(d[1]) - x(d[0]))
             .attr("height", y.bandwidth())
-            .on("mouseover", function() {
-                greyOut()
+            .on("mouseover", function (d, i) {
+                greyOut();
+
+                // tooltipText = (i.data['location'] === "average1") ? "containment" : (a === "average2") ? "stringency" : undefined;
+                tooltipVal = i[1] - i[0]
+                tooltip.html(`${i.data['location']} : ${Math.round(tooltipVal * 100) / 100}`)
+                    .style("visibility", "visible");
+                d3.select(this).attr("fill", "red");
                 // Highlight the corresponding line
-                svg.selectAll("."+this.parentNode.id)
-                    .style("opacity", 1)
-                    .style("fill", color(this.parentNode.id.split("_")[1]+"_"+this.parentNode.id.split("_")[2]+"_"+this.parentNode.id.split("_")[3]));
+                svg.selectAll("." + this.parentNode.id)
+                  .style("opacity", 1)
+                  .style("fill", color(this.parentNode.id.split("_")[1] + "_" + this.parentNode.id.split("_")[2] + "_" + this.parentNode.id.split("_")[3]));
             })
-            .on("mouseout", doNotHighlight)
+            .on("mousemove", function () {
+                tooltip
+                    .style("top", (event.pageY - 10) + "px")
+                    .style("left", (event.pageX + 10) + "px");
+            })
+            .on("mouseout", function () {
+                doNotHighlight();
+                // Hide the tooltip when the mouse leaves the bar
+                tooltip.style("visibility", "hidden");
+            })
             .attr("width", 0)
             .transition()
             .duration(1000)
@@ -174,4 +202,4 @@ function drawStackedBar (id, dataset) {
     })
 }
 
-drawStackedBar("#barplot1", "./assets/data/barplot/average_1.csv")
+drawStackedBar("#barplot1", "./assets/data/barplot/average_1.csv", "1st")
