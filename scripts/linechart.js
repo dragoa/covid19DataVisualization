@@ -31,7 +31,7 @@ function drawGraph (id, dataset, deathOptionValue, wave) {
 
     const tooltip = d3.select(id)
         .append("div")
-        .attr("class", "tooltip1")
+        .attr("class", "tooltip1 fade-in")
         .style("display", "none");
 
     // Get the data
@@ -235,7 +235,7 @@ function drawGraph (id, dataset, deathOptionValue, wave) {
                 dataForDate.sort((a, b) => b[deathOptionValue] - a[deathOptionValue]);
 
                 // Generate HTML for the tooltip
-                const html = "<div>Date: " + d3.timeFormat("%d-%m-%Y")(d.date)+"<br>" +"<br>"+ "</div>" +
+                const html = "<div>Date: " + d3.timeFormat("%d-%m-%Y")(d.date)+"<br><br>" + "</div>" +
                     dataForDate.map(d => "<div>" + d.location + ": " + d[deathOptionValue] + "</div>").join("");
 
                 tooltip.style("display", "block")

@@ -84,9 +84,10 @@
     opacity: 1 !important;
     background-color: white;
     transform: translate(7%, -7%);
-    padding: 0.5rem !important;
+    padding: 0.4rem !important;
     z-index: 1 !important;
     text-align: left;
+    font-size: 10px;
 }
 
 html {

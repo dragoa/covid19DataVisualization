@@ -1,9 +1,14 @@
 //Bubble plot
 d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (data) {
     // set the dimensions and margins of the graph
-    const margin = { top: 20, right: 200, bottom: 70, left: 50 },
-        width = 1000 - margin.left - margin.right,
-        height = 650 - margin.top - margin.bottom;
+    const margin = { top: 20, right: 480, bottom: 170, left: 40 },
+        width = 1300 - margin.left - margin.right,
+        height = 800 - margin.top - margin.bottom;
+
+    data.forEach((d) => {
+        // Convert to thousands
+        d.gdp_per_capita = (d.gdp_per_capita/1000).toFixed(2);
+    });
 
     // append the svg object to the body of the page
     const svg5 = d3.select("#bubble")
@@ -49,9 +54,7 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
         .range([3, 35]);
 
     // Add a scale for bubble color
-    const names = data.map(d => d.location)
-    const names_uniq = [...new Set(names)];
-    const names_ordered = names_uniq.sort((a, b) => a.localeCompare(b))
+    let names = data.map(d => d.location)
     // Set the color scale
     const colors = ["#dbdb8d", "#17becf", "#9edae5", "#5254a3", "#6b6ecf", "#9c9ede" ,"#f7b6d2", "#bcbd22", "#e377c2", "#393b79","#e7ba52", "#1f77b4", "#637939", "#8ca252","#2ca02c", "#b5cf6b", "#8c6d31", "#bd9e39", "#aec7e8", "#ff7f0e", "#ffbb78", "#98df8a",  "#ff9896", "#9467bd", "#c5b0d5","#d62728", "#8c564b", "#c49c94", "#7f7f7f"];
     const myColor = d3.scaleOrdinal().range(colors);
@@ -101,64 +104,40 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
         .on("mousemove", moveTooltip)
         .on("mouseleave", hideTooltip)
 
-    var size = d3.scaleSqrt()
-        .domain([0, Math.max(...canopy_covers)]).nice()
-        .range([3, 35]);
+    // Add legend for color
+    svg5.append("g")
+        .attr("class", "legendColor")
+        .attr("transform", "translate(900, -20)")
+        .style("text-anchor", "start")
+        .style("font-size", "14px");
 
-    // Add legend: circles
-    var valuesToShow = [Math.max(...canopy_covers) / 8, Math.max(...canopy_covers) / 2, Math.max(...canopy_covers)]
-    var xCircle = 820
-    var xLabel = 920
-    var yCircle = 80
-    svg5
-        .selectAll("#bubble")
-        .data(valuesToShow)
-        .enter()
-        .append("circle")
-        .attr("cx", xCircle)
-        .attr("cy", function (d) { return yCircle - size(d) })
-        .attr("r", function (d) { return size(d) })
-        .style("fill", "none")
-        .attr("stroke", "black")
+    var legendColor = d3.legendColor()
+        .scale(myColor)
+        .shapePadding(8)
+        .shapeWidth(15)
+        .shapeHeight(15)
+        .labelOffset(6);
 
-    // Add legend: segments
-    svg5
-        .selectAll("#bubble")
-        .data(valuesToShow)
-        .enter()
-        .append("line")
-        .attr('x1', function (d) { return xCircle + size(d) })
-        .attr('x2', xLabel - 50)
-        .attr('y1', function (d) { return yCircle - size(d) })
-        .attr('y2', function (d) { return yCircle - 1.5 * size(d) })
-        .attr('stroke', 'black')
-        .style('stroke-dasharray', ('2,2'))
+    svg5.select(".legendColor")
+        .call(legendColor);
 
-    // Add legend: labels
-    svg5
-        .selectAll("#bubble")
-        .data(valuesToShow)
-        .enter()
-        .append("text")
-        .attr('x', xLabel - 50)
-        .attr('y', function (d) { return yCircle - 1.5 * size(d) })
-        .text(d => d + " (m^2)")
-        .style("font-size", 15)
-        .attr('alignment-baseline', 'center')
+    // Add legend for size
+    svg5.append("g")
+        .attr("class", "legendSize")
+        .attr("transform", "translate(90, 10)")
 
-    // legend
-    for (let i = 0; i < names_ordered.length; i++) {
-        svg5.append("circle")
-            .attr("cx", 800)
-            .attr("cy", 100 + i * 18)
-            .attr("r", 6)
-            .style("fill", myColor(i))
-        svg5.append("text")
-            .attr("x", 820)
-            .attr("y", 100 + i * 18)
-            .text(names_ordered[i])
-            .style("font-size", "15px")
-            .attr("alignment-baseline", "middle")
-    }
+    var legendSize = d3.legendSize()
+        .scale(z)
+        .shape('circle')
+        .shapePadding(0)
+        .labelAlign('end')
+        .orient('vertical')
+        .labels(d3.legendHelpers.thresholdLabels)
+        .labelFormat(d3.format(".1s"));
+
+    svg5.select(".legendSize")
+        .call(legendSize)
+        .selectAll("circle")
+        .attr("fill", "#f8f9fa")
+        .attr("stroke", "black");
 })
-

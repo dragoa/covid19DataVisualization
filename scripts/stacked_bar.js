@@ -60,10 +60,11 @@ function drawStackedBar (id, dataset, wave) {
             .style("position", "absolute")
             .style("z-index", "10")
             .style("visibility", "hidden")
-            .style("padding", "15px")
+            .style("padding", "12px")
             .style("background", "rgba(0,0,0,0.6)")
             .style("border-radius", "5px")
-            .style("color", "#fff")
+            .style("background-color", "#fff")
+            .style("color", "green")
             .text("a simple tooltip");
 
         const greyOut = function (){
