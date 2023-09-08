@@ -31,7 +31,7 @@ function drawGraph (id, dataset, deathOptionValue, wave) {
 
     const tooltip = d3.select(id)
         .append("div")
-        .attr("class", "tooltip")
+        .attr("class", "tooltip1")
         .style("display", "none");
 
     // Get the data
@@ -239,8 +239,8 @@ function drawGraph (id, dataset, deathOptionValue, wave) {
                     dataForDate.map(d => "<div>" + d.location + ": " + d[deathOptionValue] + "</div>").join("");
 
                 tooltip.style("display", "block")
-                    .style('left', `${event.x-200}px`)
-                    .style('top', `${event.y-300}px`)
+                    .style('left', `${event.x+50}px`)
+                    .style('top', `${event.y-200}px`)
                     .html(html);
             })
             .on("mouseout", function() {

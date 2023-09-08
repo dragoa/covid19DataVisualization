@@ -77,6 +77,18 @@
     }
 }
 
+.tooltip1{
+    position: fixed;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    opacity: 1 !important;
+    background-color: white;
+    transform: translate(7%, -7%);
+    padding: 0.5rem !important;
+    z-index: 1 !important;
+    text-align: left;
+}
+
 html {
     scroll-behavior: smooth;
 }
