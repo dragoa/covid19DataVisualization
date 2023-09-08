@@ -52,9 +52,9 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
     const names = data.map(d => d.location)
     const names_uniq = [...new Set(names)];
     const names_ordered = names_uniq.sort((a, b) => a.localeCompare(b))
-    const myColor = d3.scaleOrdinal()
-        .domain(names_ordered)
-        .range(d3.schemeTableau10);
+    // Set the color scale
+    const colors = ["#dbdb8d", "#17becf", "#9edae5", "#5254a3", "#6b6ecf", "#9c9ede" ,"#f7b6d2", "#bcbd22", "#e377c2", "#393b79","#e7ba52", "#1f77b4", "#637939", "#8ca252","#2ca02c", "#b5cf6b", "#8c6d31", "#bd9e39", "#aec7e8", "#ff7f0e", "#ffbb78", "#98df8a",  "#ff9896", "#9467bd", "#c5b0d5","#d62728", "#8c564b", "#c49c94", "#7f7f7f"];
+    const myColor = d3.scaleOrdinal().range(colors);
 
     // -1- Create a tooltip div that is hidden by default:
     const tooltip = d3.select("body")
@@ -64,7 +64,7 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
         .style("z-index", "10")
         .style("visibility", "hidden")
         .style("padding", "15px")
-        .style("background", "rgba(0,0,0,0.6)")
+        .style("background", "rgba(0,0,0,0.7)")
         .style("border-radius", "5px")
         .style("color", "#fff")
         .text("a simple tooltip");
