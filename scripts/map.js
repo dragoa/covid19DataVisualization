@@ -100,7 +100,7 @@ function drawMap(id, dataset, colorMap, year){
     })
 }
 
-drawMap("#map1", "assets/data/map/map_tot_stringency1.csv", d => d3.scaleThreshold().domain([10000, 20000, 30000, 40000, 50000]).range(d3.schemeBlues[7]), "average_stringency_containment_index")
+drawMap("#map1", "assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d/100), "average_stringency_containment_index")
 
 function handlePaymentChange2(event) {
     const wave = event.target.id
