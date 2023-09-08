@@ -29,7 +29,7 @@ function drawMap(id, dataset, colorMap, year){
             .translate([width / 2, height / 2])
 
         const color = colorMap
-        Legend(d3.scaleThreshold([0, 20, 40, 60, 80, 100], d3.schemeGreens[7]), "#legend_map")
+        Legend(d3.scaleThreshold([20, 40, 60, 80], d3.schemeGreens[5]), "#legend_map")
 
         let topo = loadData[0]
         // projection.fitSize([width, height], topo);
@@ -81,7 +81,6 @@ function drawMap(id, dataset, colorMap, year){
                 } else if (isNaN(percValue)){
                     tooltipText = "Missing data";
                 }
-                console.log(tooltipText)
 
                 tooltip.html(d.properties.name + ": " + tooltipText)
                     .style("visibility", "visible");
@@ -101,27 +100,25 @@ function drawMap(id, dataset, colorMap, year){
     })
 }
 
-drawMap("#map1", "assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
+drawMap("#map1", "assets/data/map/map_tot_stringency1.csv", d => d3.scaleThreshold().domain([10000, 20000, 30000, 40000, 50000]).range(d3.schemeBlues[7]), "average_stringency_containment_index")
 
 function handlePaymentChange2(event) {
     const wave = event.target.id
 
     if(wave === "flexRadio1"){
-        drawBarplot("#barplot1", "/assets/data/barplot/average_1.csv")
-        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
+        drawStackedBar("#barplot1", "/assets/data/barplot/average_1.csv")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d/100), "average_stringency_containment_index")
     }
     else if(wave === "flexRadio2"){
-        drawBarplot("#barplot1", "/assets/data/barplot/average_2.csv")
-        drawBarplot("#barplot2", "./assets/data/vaccine/pop_vaccinated_2.csv")
+        drawStackedBar("#barplot1", "/assets/data/barplot/average_2.csv")
         drawMap("#map1", "/assets/data/map/map_tot_stringency2.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
     }
     else if(wave === "flexRadio3"){
-        drawBarplot("#barplot1", "/assets/data/barplot/average_3.csv")
+        drawStackedBar("#barplot1", "/assets/data/barplot/average_3.csv")
         drawMap("#map1", "/assets/data/map/map_tot_stringency3.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
-        drawBarplot("#barplot2", "./assets/data/vaccine/pop_vaccinated_3.csv")
     }
     else{
-        drawBarplot("#barplot1", "/assets/data/barplot/average_1.csv")
+        drawStackedBar("#barplot1", "/assets/data/barplot/average_1.csv")
         drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
     }
 }

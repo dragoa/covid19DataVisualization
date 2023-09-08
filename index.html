@@ -444,10 +444,23 @@
                         <div id="barplot1" class="hidden-left mb-3 graph"></div>
                         <div id="map1"></div>
                         <div id="legend_map"></div>
-                        <div class="vax"></div>
+                        <div class="vax">
                             <h4>Vaccines</h4>
                             <p>Let's see the impact of the vaccines for the best countries for each wave.</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio4" onchange="handlePaymentChange3(event)" checked>
+                                <label class="form-check-label" for="flexRadio4">
+                                    2nd Wave
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio5" onchange="handlePaymentChange3(event)">
+                                <label class="form-check-label" for="flexRadio5">
+                                    3rd wave
+                                </label>
+                            </div>
                             <div id="barplot2" class="hidden-left mb-3 graph"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -501,8 +514,9 @@
         });
     </script>
     <script src="scripts/linechart.js"></script>
-    <script src="scripts/barplot.js"></script>
+    <script src="scripts/stacked_bar.js"></script>
     <script src="scripts/legendScript.js"></script>
     <script src="scripts/map.js"></script>
+    <script src="scripts/barplot.js"></script>
 </body>
 </html>
