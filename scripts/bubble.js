@@ -32,6 +32,10 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
             .style("stroke-width", "0.1px")
             .style("fill", "lightgrey")
             .style("opacity", 0.5);
+        svg5.selectAll(".gdpPerCapitaCountry")
+            .style("stroke-width", "0.1px")
+            .style("fill", "lightgrey")
+            .style("opacity", 0.5);
     }
 
     const doNotHighlight = function (){
@@ -57,6 +61,13 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
                 .style("stroke-width", "0.25px")
                 .style("opacity", 1)
                 .style("fill", myColor(countries[i]));
+
+            svg5.select("#gdpPerCapitaCountry_"+ countries[i])
+                .transition()
+                .duration(200)
+                .style("stroke-width", "0.25px")
+                .style("opacity", 1)
+                .style("fill", "black");
         }
     }
 
@@ -184,6 +195,12 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
                     .style("opacity", 1)
                     .style("fill", myColor(selected_country));
 
+                svg5.select("#gdpPerCapitaCountry_"+selected_country)
+                    .style("stroke-width", "1px")
+                    .style("opacity", 1)
+                    .style("fill", myColor(selected_country));
+
+
                 showTooltip(event, d);
                 d3.select(this).attr("stroke", "black");
             })
@@ -238,6 +255,11 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
                 .style("stroke-width", "1px")
                 .style("opacity", 1)
                 .style("fill", myColor(rectId));
+
+            svg5.select("#gdpPerCapitaCountry_"+rectId)
+                .style("stroke-width", "1px")
+                .style("opacity", 1)
+                .style("fill", myColor(rectId));
         })
         .on("mouseout", doNotHighlight);
 
@@ -269,6 +291,11 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
                 .style("stroke-width", "1px")
                 .style("opacity", 1)
                 .style("fill", myColor(legId));
+
+            svg5.select("#gdpPerCapitaCountry_"+legId)
+                .style("stroke-width", "1px")
+                .style("opacity", 1)
+                .style("fill", myColor(legId));
         })
         .on("mouseout", doNotHighlight);
 
@@ -276,8 +303,8 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
             .attr("x", 60)
             .attr("y", 90)
             .attr("dy", ".35em")
-            .attr("class", "totDeaths")
-            .attr("id", function (d) { return "totDeaths_" + d.key; })
+            .attr("class", "gdpPerCapitaCountry")
+            .attr("id", function (d) { return "gdpPerCapitaCountry_" + d.key; })
             .style("text-anchor", "start")
             .text(function (d) {
                 const selectCountry = d.key;
