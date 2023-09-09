@@ -31,8 +31,9 @@ function drawMap(id, dataset, colorMap, year){
             .scale([width / 1.3])
             .translate([width / 2, height / 2])
 
+        console.log(d3.schemeGreens[6])
         const color = colorMap
-        Legend(d3.scaleThreshold([20, 40, 60, 80], d3.schemeGreens[5]), "#legend_map")
+        Legend(d3.scaleThreshold([0, 20, 40, 60, 80], ['lightgrey', '#FFB17A', "#F1FEC6", '#037971', '#023436', 'black']), "#legend_map")
 
         let topo = loadData[0]
         // projection.fitSize([width, height], topo);
