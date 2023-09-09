@@ -66,13 +66,22 @@ function drawGraph (id, dataset, deathOptionValue, wave) {
         svg.append("g")
             .call(d3.axisLeft(y));
 
+        let date = ""
+        if(wave === "1st")
+            date = "15/02/2020 and 20/07/2020"
+        else if(wave === "2nd")
+            date = "20/07/2020 and 10/07/2021"
+        else if(wave === "3rd")
+            date = "10/07/2021 and 16/02/2023"
+
+
         // Add X axis label
         svg.append("text")
             .attr("class", "axis-label")
             .attr("text-anchor", "middle")
             .attr("x", width/2)
             .attr("y", height + margin.bottom - 10)
-            .text("Date between 15/02/2020 and 20/07/2020")
+            .text(`Date between ${date}`)
             .style("font-weight", "bold")
             .style("font-family", "Fira Sans");
 
@@ -83,7 +92,7 @@ function drawGraph (id, dataset, deathOptionValue, wave) {
             .attr("transform", "rotate(-90)")
             .attr("x", -height/2)
             .attr("y", -margin.left +30)
-            .text("New Deaths")
+            .text(`${deathOptionValue.replace(/_/g, ' ')}`)
             .style("font-weight", "bold")
             .style("font-family", "Fira Sans");
 

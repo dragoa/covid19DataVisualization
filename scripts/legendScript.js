@@ -2,7 +2,7 @@ function Legend(color, id, {
     title,
     tickSize = 1,
     width = 350,
-    height = 23 + tickSize,
+    height = 24 + tickSize,
     marginTop = 0,
     marginRight = 50,
     marginBottom = 20 + tickSize,

@@ -1,4 +1,4 @@
-function drawMap(id, dataset, colorMap, year){
+function drawMap(id, dataset, colorMap, wave){
 
     const map = new Map();
     colorMap = d3.scaleLinear()
@@ -10,7 +10,7 @@ function drawMap(id, dataset, colorMap, year){
         d3.json("/assets/data/map/custom.geo.json"),
         d3.csv(dataset, function (d) {
             // console.log(d);
-            map.set(d.location, +d[year])
+            map.set(d.location, +d['average_stringency_containment_index'])
         })
     ]).then(function (loadData) {
 
@@ -26,6 +26,17 @@ function drawMap(id, dataset, colorMap, year){
             .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
             .attr("preserveAspectRatio", "xMidYMid meet")
 
+        // Add X axis label
+        svg.append("text")
+            .attr("class", "axis-label")
+            .attr("text-anchor", "middle")
+            .style("font-size", "20px")
+            .attr("x", (width+margin.right+margin.left)/2)
+            .attr("y", height + margin.bottom)
+            .text(`${wave} wave average stringency and containment index`)
+            .style("font-weight", "bold")
+            .style("font-family", "Fira Sans");
+
         // projection reflecting the Y to match d3 requirements
         let projection = d3.geoMercator()
             .center([7, 56])
@@ -34,7 +45,7 @@ function drawMap(id, dataset, colorMap, year){
 
         console.log(d3.schemeGreens[6])
         const color = colorMap
-        Legend(d3.scaleThreshold([0, 20, 40, 60, 80], ['lightgrey', '#FFB17A', "#F1FEC6", '#037971', '#023436', 'black']), "#legend_map")
+        Legend(d3.scaleThreshold([0, 20, 40, 60, 80], ['lightgrey', '#FFB17A', "#F1FEC6", '#037971', '#023436']), "#legend_map")
 
         let topo = loadData[0]
         // projection.fitSize([width, height], topo);
@@ -101,29 +112,28 @@ function drawMap(id, dataset, colorMap, year){
                     .style("stroke", "black")
                 tooltip.html(``).style("visibility", "hidden");
             });
-
     })
 }
 
-drawMap("#map1", "assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d/100), "average_stringency_containment_index")
+drawMap("#map1", "assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d/100), "1st")
 
 function handlePaymentChange2(event) {
     const wave = event.target.id
 
     if(wave === "flexRadio1"){
         drawStackedBar("#barplot1", "/assets/data/barplot/average_1.csv", "1st")
-        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d/100), "average_stringency_containment_index")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d/100), "1st")
     }
     else if(wave === "flexRadio2"){
         drawStackedBar("#barplot1", "/assets/data/barplot/average_2.csv", "2nd")
-        drawMap("#map1", "/assets/data/map/map_tot_stringency2.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency2.csv", d => d3.interpolateGreens(d / 100), "2nd")
     }
     else if(wave === "flexRadio3"){
         drawStackedBar("#barplot1", "/assets/data/barplot/average_3.csv", "3rd")
-        drawMap("#map1", "/assets/data/map/map_tot_stringency3.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency3.csv", d => d3.interpolateGreens(d / 100), "3rd")
     }
     else{
         drawStackedBar("#barplot1", "/assets/data/barplot/average_1.csv", "1st")
-        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "average_stringency_containment_index")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "1st")
     }
 }

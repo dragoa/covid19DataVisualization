@@ -1,4 +1,4 @@
-function drawBarplot(id, dataset) {
+function drawBarplot(id, dataset, wave) {
 
     d3.select(id).selectAll("svg").remove();
 
@@ -14,6 +14,15 @@ function drawBarplot(id, dataset) {
         .attr("preserveAspectRatio", "xMidYMid meet")
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", -margin.top+35)
+        .attr("text-anchor", "middle")
+        .style("font-size", "20px")
+        .text(`${wave} wave barplot: Comparison between people vaccinated per hundred and people fully vaccinated per hundred`)
+        .style("font-weight", "bold")
+        .style("font-family", "Fira Sans");
 
     // Get the data
     d3.csv(dataset).then(function (data) {
@@ -49,7 +58,7 @@ function drawBarplot(id, dataset) {
         // color palette = one color per subgroup
         const color = d3.scaleOrdinal()
             .domain(subgroups)
-            .range(['#e41a1c', '#377eb8', '#4daf4a'])
+            .range(['#037971', '#023436'])
 
         // add tooltip
         const tooltip = d3.select("body")
@@ -127,15 +136,15 @@ function drawBarplot(id, dataset) {
     });
 }
 
-drawBarplot("#barplot2", "assets/data/vaccine/pop_vaccinated_2.csv")
+drawBarplot("#barplot2", "assets/data/vaccine/pop_vaccinated_2.csv", "2nd")
 
 function handlePaymentChange3(event) {
     const wave = event.target.id
 
     if(wave === "flexRadio4")
-        drawBarplot("#barplot2", "assets/data/vaccine/pop_vaccinated_2.csv")
+        drawBarplot("#barplot2", "assets/data/vaccine/pop_vaccinated_2.csv", "2nd")
     else if(wave === "flexRadio5")
-        drawBarplot("#barplot2", "assets/data/vaccine/pop_vaccinated_3.csv")
+        drawBarplot("#barplot2", "assets/data/vaccine/pop_vaccinated_3.csv", "3rd")
     else
-        drawBarplot("#barplot2", "assets/data/vaccine/pop_vaccinated_2.csv")
+        drawBarplot("#barplot2", "assets/data/vaccine/pop_vaccinated_2.csv", "2nd")
 }

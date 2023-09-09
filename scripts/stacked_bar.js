@@ -110,7 +110,7 @@ function drawStackedBar (id, dataset, wave) {
             .attr("transform", "rotate(-90)")
             .attr("x", -height/2)
             .attr("y", -margin.left +30)
-            .text("{wave} wave : Top 5 countries ")
+            .text(`${wave} wave : Top 5 countries `)
             .style("font-weight", "bold")
             .style("font-family", "Fira Sans");
 

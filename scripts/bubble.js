@@ -17,6 +17,16 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
         .attr("preserveAspectRatio", "xMidYMid meet")
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    svg5.append("text")
+        .attr("x", width/2 - 32)
+        .attr("y", -margin.top+20)
+        .attr("text-anchor", "middle")
+        .style("font-size", "20px")
+        .text(`Bubble chart: Comparison between people vaccinated per hundred and people fully vaccinated per hundred and countries GDP`)
+        .style("font-weight", "bold")
+        .style("font-family", "Fira Sans");
+
     // Add X axis
     const heights = data.map(d => d.people_vaccinated_per_hundred)
     const x = d3.scaleLinear()
