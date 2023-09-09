@@ -260,14 +260,7 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
                 .style("stroke-width", "1px")
                 .style("opacity", 1)
                 .style("fill", myColor(rectId));
-
-            event1 = {}
-            event1.isTrusted = true
-            event1.screenX = 700
-            event1.screenY = 400
-            event1.clientX = 766
-            event1.clientY = 333
-
+            
             d1 = {}
             d1.location = d.key
             d1.date = d.values[0].date
@@ -275,12 +268,17 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
             d1.people_vaccinated_per_hundred = d.values[0].people_vaccinated_per_hundred
             d1.people_fully_vaccinated_per_hundred = d.values[0].people_fully_vaccinated_per_hundred
 
-            showTooltip(event1, d1)
+            showTooltip(event, d1)
         })
         .on("mouseout", function (){
             hideTooltip()
             doNotHighlight()
-        });
+        })
+        .on("mousemove", moveTooltip)
+        .on("mouseleave", function (event, d) {
+            hideTooltip(event, d);
+            d3.select(this).attr("stroke", "none")
+        })
 
     // Draw legend text and values
     legend.append("text")
