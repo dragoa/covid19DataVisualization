@@ -109,10 +109,17 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
         .attr("cy", d => y(d.people_fully_vaccinated_per_hundred))
         .attr("r", d => z(d.gdp_per_capita))
         .style("fill", d => myColor(d.location))
+        .attr("stroke", "none") // Add this line to set the default stroke to none
         // -3- Trigger the functions
-        .on("mouseover", showTooltip)
+        .on("mouseover", function (event, d) {
+            showTooltip(event, d);
+            d3.select(this).attr("stroke", "black"); // Add this line to set the stroke to black on hover
+        })
         .on("mousemove", moveTooltip)
-        .on("mouseleave", hideTooltip)
+        .on("mouseleave", function (event, d) {
+            hideTooltip(event, d);
+            d3.select(this).attr("stroke", "none"); // Add this line to reset the stroke to none on mouse leave
+        });
 
     // Add legend for color
     svg5.append("g")
