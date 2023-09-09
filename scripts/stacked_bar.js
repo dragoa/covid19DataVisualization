@@ -155,7 +155,7 @@ function drawStackedBar (id, dataset, wave) {
 
                 // tooltipText = (i.data['location'] === "average1") ? "containment" : (a === "average2") ? "stringency" : undefined;
                 tooltipVal = i[1] - i[0]
-                tooltip.html(`${i.data['location']} : ${Math.round(tooltipVal * 100) / 100}`)
+                tooltip.html(`${i.data['location']} : ${Math.round(tooltipVal * 100) / 100}%`)
                     .style("visibility", "visible");
                 d3.select(this).attr("fill", "red");
                 // Highlight the corresponding line

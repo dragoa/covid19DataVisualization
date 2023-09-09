@@ -95,7 +95,7 @@ function drawBarplot(id, dataset, wave) {
             .on("mouseover", function (d, i) {
                 tooltip.html(`${i.key.replace(/_/g, ' ')} : ${Math.round(i.value * 100) / 100}`)
                     .style("visibility", "visible");
-                d3.select(this).attr("fill", "red");
+                d3.select(this).attr("fill", "#ffb17a");
             })
             // move tooltip on move
             .on("mousemove", function () {
