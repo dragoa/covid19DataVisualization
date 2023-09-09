@@ -410,7 +410,7 @@
         </section>
     </div>
 
-    <!-- Barplot 1st Wave-->
+    <!-- StackedBar 1st Wave-->
     <div id="analysis1" class="fade-in">
         <section class="features-icons bg-light text-center">
             <div class="container">
@@ -444,23 +444,6 @@
                         <div id="barplot1" class="hidden-left mb-3 graph"></div>
                         <div id="map1"></div>
                         <div id="legend_map"></div>
-                        <div class="vax">
-                            <h4>Vaccines</h4>
-                            <p>Let's see the impact of the vaccines for the best countries for each wave.</p>
-                            <div class="form-check2">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio4" onchange="handlePaymentChange3(event)" checked>
-                                <label class="form-check-label" for="flexRadio4">
-                                    2nd Wave
-                                </label>
-                            </div>
-                            <div class="form-check2">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio5" onchange="handlePaymentChange3(event)">
-                                <label class="form-check-label" for="flexRadio5">
-                                    3rd wave
-                                </label>
-                            </div>
-                            <div id="barplot2" class="hidden-left mb-3 graph"></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -471,28 +454,35 @@
         <section class="features-icons bg-light text-center">
             <div class="container">
                 <div class="row justify-content-md-center">
-                    <div class="col-lg-11">
-                        <h4>Bubble Chart</h4>
+                    <h4>Stringency and containment index</h4>
+                    <div class="form-check2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio4" onchange="handlePaymentChange3(event)" checked>
+                        <label class="form-check-label" for="flexRadio4">
+                            2nd Wave
+                        </label>
                     </div>
-                    <div class="col-lg-11">
-                        <div id="bubble" class="hidden-left mb-3 graph"></div>
+                    <div class="form-check2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio5" onchange="handlePaymentChange3(event)">
+                        <label class="form-check-label" for="flexRadio5">
+                            3rd wave
+                        </label>
                     </div>
+                    <div id="barplot2" class="hidden-left mb-3 graph"></div>
                 </div>
             </div>
         </section>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
+    <div id="analysis3" class="fade-in">
+        <section class="features-icons bg-light text-center">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <h4>Bubble Chart</h4>
+                    <div id="bubble" class="hidden-left mb-3 graph"></div>
+                </div>
+            </div>
+        </section>
+    </div>
 
 
     <div id="conclusion1">

@@ -2,7 +2,7 @@ function Legend(color, id, {
     title,
     tickSize = 1,
     width = 350,
-    height = 22 + tickSize,
+    height = 23 + tickSize,
     marginTop = 0,
     marginRight = 50,
     marginBottom = 20 + tickSize,
@@ -32,7 +32,7 @@ function Legend(color, id, {
         .attr("viewBox", '0 0 ' + (width + marginLeft + marginRight) +
             ' ' + (height + marginTop + marginBottom))
         .append("g")
-        .attr("transform", `translate(${marginLeft}, ${marginTop})`);
+        .attr("transform", `translate(${(marginLeft+marginRight)/2}, ${(marginTop+marginBottom+height)/2})`); // Center the content horizontally
 
     let tickAdjust = g => g.selectAll(".tick line").attr("y1", marginTop + marginBottom - height);
     let x;

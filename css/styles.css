@@ -725,7 +725,8 @@ progress {
 }
 
 #map1 svg{
-
+    width: 730px;
+    height: 700px;
 }
 
 .col {
@@ -11435,6 +11436,5 @@ footer.footer {
 }
 
 #legend_map{
-    margin: 0 !important;
-    padding: 0;
+    margin-bottom: 0;
 }

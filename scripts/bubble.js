@@ -13,8 +13,8 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
     // append the svg object to the body of the page
     const svg5 = d3.select("#bubble")
         .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+        .attr("preserveAspectRatio", "xMidYMid meet")
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
     // Add X axis

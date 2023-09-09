@@ -14,16 +14,17 @@ function drawMap(id, dataset, colorMap, year){
         })
     ]).then(function (loadData) {
 
-        var height = 700;
-        var width = document.documentElement.clientWidth / 2;
+        const margin = {top: 10, right: 10, bottom: 10, left: 10},
+            width = 500 - margin.left - margin.right,
+            height = 400 - margin.top - margin.bottom;
 
         var mapId = document.getElementById(id.replace("#", ""))
         mapId.innerHTML = "";
 
         const svg = d3.select(id)
             .append("svg")
-            .attr("width", width)
-            .attr("height", height)
+            .attr("viewBox", `0 0 ${width} ${height}`)
+            .attr("preserveAspectRatio", "xMidYMid meet")
 
         // projection reflecting the Y to match d3 requirements
         let projection = d3.geoMercator()
