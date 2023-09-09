@@ -3,9 +3,9 @@ function drawBarplot(id, dataset) {
     d3.select(id).selectAll("svg").remove();
 
     // Set the dimensions and margins of the graph
-    const margin = { top: 100, right: 150, bottom: 50, left: 70 },
-        width = 1400 - margin.left - margin.right,
-        height = 740 - margin.top - margin.bottom;
+    const margin = { top: 50, right: 30, bottom: 70, left: 80 },
+        width = 1200 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
 
     // Create a box for the SVG graph with specified margins and dimensions
     const svg = d3.select(id)

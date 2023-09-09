@@ -1,9 +1,9 @@
 //Bubble plot
 d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (data) {
     // set the dimensions and margins of the graph
-    const margin = { top: 20, right: 480, bottom: 170, left: 40 },
+    const margin = { top: 50, right: 230, bottom: 70, left: 80 },
         width = 1300 - margin.left - margin.right,
-        height = 800 - margin.top - margin.bottom;
+        height = 750 - margin.top - margin.bottom;
 
     data.forEach((d) => {
         // Convert to thousands
@@ -20,7 +20,7 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
     // Add X axis
     const heights = data.map(d => d.people_vaccinated_per_hundred)
     const x = d3.scaleLinear()
-        .domain([0, Math.max(...heights)]).nice()
+        .domain([0,100]).nice()
         .range([0, width]);
     svg5.append("g")
         .attr("transform", `translate(0, ${height})`)
@@ -35,7 +35,7 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
     // Add Y axis
     const co2_absorptions = data.map(d => d.people_fully_vaccinated_per_hundred)
     const y = d3.scaleLinear()
-        .domain([0, Math.max(...co2_absorptions)]).nice()
+        .domain([0, 100]).nice()
         .range([height, 0]);
     svg5.append("g")
         .call(d3.axisLeft(y));
@@ -107,7 +107,7 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
     // Add legend for color
     svg5.append("g")
         .attr("class", "legendColor")
-        .attr("transform", "translate(900, -20)")
+        .attr("transform", "translate(1050, -20)")
         .style("text-anchor", "start")
         .style("font-size", "14px");
 

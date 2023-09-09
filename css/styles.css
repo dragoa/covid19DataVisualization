@@ -725,8 +725,8 @@ progress {
 }
 
 #map1 svg{
-    width: 730px;
-    height: 700px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 .col {

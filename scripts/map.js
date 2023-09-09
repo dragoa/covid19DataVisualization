@@ -14,16 +14,16 @@ function drawMap(id, dataset, colorMap, year){
         })
     ]).then(function (loadData) {
 
-        const margin = {top: 10, right: 10, bottom: 10, left: 10},
-            width = 500 - margin.left - margin.right,
-            height = 400 - margin.top - margin.bottom;
+        const margin = {top: 10, right: 100, bottom: 10, left: 100},
+            width = 1000 - margin.left - margin.right,
+            height = 800 - margin.top - margin.bottom;
 
         var mapId = document.getElementById(id.replace("#", ""))
         mapId.innerHTML = "";
 
         const svg = d3.select(id)
             .append("svg")
-            .attr("viewBox", `0 0 ${width} ${height}`)
+            .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
             .attr("preserveAspectRatio", "xMidYMid meet")
 
         // projection reflecting the Y to match d3 requirements
