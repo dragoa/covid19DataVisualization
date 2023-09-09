@@ -1,7 +1,7 @@
 //Bubble plot
 d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (data) {
     // set the dimensions and margins of the graph
-    const margin = { top: 50, right: 230, bottom: 70, left: 80 },
+    const margin = { top: 50, right: 240, bottom: 70, left: 80 },
         width = 1300 - margin.left - margin.right,
         height = 750 - margin.top - margin.bottom;
 
@@ -198,8 +198,8 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
 
     // Sort dataNest by total number of new deaths in descending order
     dataNest.sort(function (a, b) {
-        const gdpA = a.gdp_per_capita;
-        const gdpB = b.gdp_per_capita;
+        const gdpA = a.values[0].gdp_per_capita
+        const gdpB = b.values[0].gdp_per_capita
         return d3.descending(gdpA, gdpB);
     });
 
@@ -212,7 +212,8 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
 
     // Draw legend colored rectangles
     legend.append("rect")
-        .attr("x", 0)
+        .attr("x", 30)
+        .attr("y", 81)
         .attr("width", 18)
         .attr("height", 18)
         .attr("class","rect")
@@ -242,8 +243,8 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
 
     // Draw legend text and values
     legend.append("text")
-        .attr("x", -6)
-        .attr("y", 9)
+        .attr("x", 25)
+        .attr("y", 90)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
         .text(function (d) { return d.key; })
@@ -271,54 +272,34 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
         })
         .on("mouseout", doNotHighlight);
 
+        legend.append("text")
+            .attr("x", 60)
+            .attr("y", 90)
+            .attr("dy", ".35em")
+            .attr("class", "totDeaths")
+            .attr("id", function (d) { return "totDeaths_" + d.key; })
+            .style("text-anchor", "start")
+            .text(function (d) {
+                const selectCountry = d.key;
+                return d.values[0].gdp_per_capita
+            })
 
+        // Add text to the top of the legend
+        svg5.append("text")
+            .attr("class", "legend-title")
+            .attr("x", width + 160)
+            .attr("y", -margin.top + 45)
+            .style("text-anchor", "start")
+            .style("font-size", "14px")
+            .style("font-weight", "bold")
+            .html("GDP per capita<br>(per thousand)");
 
-
-
-
-
-
-
-
-
-
-
-
-    /*
-    // Add legend for color
-    svg5.append("g")
-        .attr("class", "legendColor")
-        .attr("transform", "translate(1050, -20)")
-        .style("text-anchor", "start")
-        .style("font-size", "14px");
-
-    var legendColor = d3.legendColor()
-        .scale(myColor)
-        .shapePadding(8)
-        .shapeWidth(15)
-        .shapeHeight(15)
-        .labelOffset(6);
-
-    svg5.select(".legendColor")
-        .call(legendColor);
-
-    // Add legend for size
-    svg5.append("g")
-        .attr("class", "legendSize")
-        .attr("transform", "translate(90, 10)")
-
-    var legendSize = d3.legendSize()
-        .scale(z)
-        .shape('circle')
-        .shapePadding(0)
-        .labelAlign('end')
-        .orient('vertical')
-        .labels(d3.legendHelpers.thresholdLabels)
-        .labelFormat(d3.format(".1s"));
-
-    svg5.select(".legendSize")
-        .call(legendSize)
-        .selectAll("circle")
-        .attr("fill", "#f8f9fa")
-        .attr("stroke", "black");*/
+        svg5.append("text")
+            .attr("class", "legend-title")
+            .attr("x", width+65)
+            .attr("y", -margin.top + 45)
+            .style("text-anchor", "start")
+            .style("font-size", "14px")
+            .style("font-weight", "bold")
+            .text("Countries");
 })
