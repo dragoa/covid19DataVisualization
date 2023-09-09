@@ -69,7 +69,7 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
     svg5.append("text")
-        .attr("x", width/2 - 32)
+        .attr("x", width/2 - 25)
         .attr("y", -margin.top+20)
         .attr("text-anchor", "middle")
         .style("font-size", "20px")
@@ -287,12 +287,12 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
         // Add text to the top of the legend
         svg5.append("text")
             .attr("class", "legend-title")
-            .attr("x", width + 160)
+            .attr("x", width + 145)
             .attr("y", -margin.top + 45)
             .style("text-anchor", "start")
             .style("font-size", "14px")
             .style("font-weight", "bold")
-            .html("GDP per capita<br>(per thousand)");
+            .html("GDP per capita");
 
         svg5.append("text")
             .attr("class", "legend-title")
