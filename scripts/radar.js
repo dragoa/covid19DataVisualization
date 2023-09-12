@@ -217,7 +217,6 @@ var RadarChart = {
     }
 };
 
-
 //Options for the Radar chart, other than default
 var mycfg = {
     w: 600,

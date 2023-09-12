@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6b31367d-5a14-4c1a-a5f3-ed894756b107" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/radar1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/radar.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/radar.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/index.html" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2UbuzB93tPJ03Nl7JMn0jSsbiC9" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;drago&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/drago/Documents/GitHub/DataVizCovid19/scripts&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\drago\Documents\GitHub\DataVizCovid19\scripts" />
+      <recent name="C:\Users\drago\Documents\GitHub\DataVizCovid19\assets\data" />
+      <recent name="C:\Users\drago\Documents\GitHub\DataVizCovid19\assets\data\map" />
+      <recent name="C:\Users\drago\Documents\GitHub\DataVizCovid19\assets\data\barplot" />
+      <recent name="C:\Users\drago\Documents\GitHub\DataVizCovid19\assets\data\linechart" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\drago\Documents\GitHub\DataVizCovid19\assets\data\barplot" />
+      <recent name="C:\Users\drago\Documents\GitHub\DataVizCovid19\assets\data\linechart" />
+      <recent name="C:\Users\drago\Documents\GitHub\DataVizCovid19\assets\img" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DataVizCovid19/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6b31367d-5a14-4c1a-a5f3-ed894756b107" name="Changes" comment="" />
+      <created>1693220860928</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1693220860928</updated>
+      <workItem from="1693220862173" duration="16311000" />
+      <workItem from="1693255663667" duration="600000" />
+      <workItem from="1693588145782" duration="5702000" />
+      <workItem from="1693652409597" duration="92000" />
+      <workItem from="1693652632001" duration="349000" />
+      <workItem from="1693653132144" duration="28000" />
+      <workItem from="1693815175774" duration="10080000" />
+      <workItem from="1693834074078" duration="4761000" />
+      <workItem from="1693839924884" duration="87000" />
+      <workItem from="1693903783339" duration="2298000" />
+      <workItem from="1694074793670" duration="43399000" />
+      <workItem from="1694248117002" duration="373000" />
+      <workItem from="1694248506194" duration="13027000" />
+      <workItem from="1694265346221" duration="3834000" />
+      <workItem from="1694269891473" duration="4400000" />
+      <workItem from="1694349321661" duration="1848000" />
+      <workItem from="1694425000372" duration="104000" />
+      <workItem from="1694425186375" duration="486000" />
+      <workItem from="1694440204754" duration="392000" />
+      <workItem from="1694452831225" duration="5983000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/scripts/radar1.js</url>
+          <line>44</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
