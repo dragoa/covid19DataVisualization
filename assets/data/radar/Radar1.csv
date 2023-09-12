@@ -1,4 +1,4 @@
-location,date,gdp_per_capita,people_vaccinated_per_hundred,people_fully_vaccinated_per_hundred,location,average_stringency_index,average_containment_index
+location,date,gdp_per_capita,people_vaccinated_per_hundred,people_fully_vaccinated_per_hundred,average_stringency_index,average_containment_index
 Czechia,2020-07-20,32605.906,,,51.05908450704232, 52.37394366197181
 Finland,2020-07-20,40585.721,,,48.71528662420375, 42.34063694267512
 Croatia,2020-07-20,22669.797,,,63.84571428571427, 59.18482993197279
