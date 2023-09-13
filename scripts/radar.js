@@ -123,7 +123,6 @@ var RadarChart = {
         console.log(locations)
 
         const factors = ['people_vaccinated_per_hundred', 'people_fully_vaccinated_per_hundred', 'average_stringency_index', 'average_containment_index'];
-        const years = locations;
 
         year.append("text")
             .attr("class", "legend")
@@ -137,107 +136,90 @@ var RadarChart = {
             .attr("y", function (d, i) { return cfg.h / 2 * (1 - Math.cos(i * cfg.radians / total)) - 20 * Math.cos(i * cfg.radians / total); })
 
         var i = 0;
-        d.forEach(function (y, x) {
-            dataTemps = [];
-            g.selectAll(".nodes")
-                .data(y, function (j, i) {
-                    const targetValue = "0"; // The value you want to find
-                    const matchingKeys = [];
-                    delete j.location
-                    delete j.date
-                    delete j.gdp_per_capita
+        factors.forEach(function (key){
 
-                    // Iterate over the object's properties
-                    for (const key in j) {
+            d.forEach(function (y, x) {
+                dataTemps = [];
+                g.selectAll(".nodes")
+                    .data(y, function (j, i) {
+
+                        // Iterate over the object's properties
                         dataTemps.push([
-                                cfg.w / 2 * (1 - (parseFloat(Math.max(j[key], 0)) / cfg.maxTemp) * cfg.factor * Math.sin(i * cfg.radians / total)),
-                                cfg.h / 2 * (1 - (parseFloat(Math.max(j[key], 0)) / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total))])
-                    }
-                });
-            dataTemps.push(dataTemps[0]);
-            g.selectAll(".area")
-                .data([dataTemps])
-                .enter()
-                .append("polygon")
-                .style("stroke-width", "1px")
-                .style("stroke", cfg.color(series))
-                .attr("class", "lowOpacityOnHover year" + years[i++])
-                .attr("points", function (d) {
-                    var str = "";
-                    for (var pti = 0; pti < d.length; pti++) {
-                        str = str + d[pti][0] + "," + d[pti][1] + " ";
-                    }
-                    return str;
-                })
-                .style("fill", function (j, i) { return cfg.color(series) })
-                .style("fill-opacity", cfg.opacityArea)
-            series++;
-        });
+                            cfg.w / 2 * (1 - (parseFloat((j[key])) / cfg.maxTemp) * cfg.factor * Math.sin(i * cfg.radians / total)),
+                            cfg.h / 2 * (1 - (parseFloat((j[key])) / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total))])
+                    });
+                //dataTemps.push(dataTemps[0]);
+                g.selectAll(".area")
+                    .data([dataTemps])
+                    .enter()
+                    .append("polygon")
+                    .style("stroke-width", "1px")
+                    .style("stroke", cfg.color(series))
+                    .attr("class", "lowOpacityOnHover year" + locations[i++])
+                    .attr("points", function (d) {
+                        var str = "";
+                        for (var pti = 0; pti < d.length; pti++) {
+                            str = str + d[pti][0] + "," + d[pti][1] + " ";
+                        }
+                        return str;
+                    })
+                    .style("fill", function (j, i) { return cfg.color(series) })
+                    .style("fill-opacity", cfg.opacityArea)
+                series++;
+            });
+        })
         series = 0;
 
         // plot vertical legend
         var i = 0;
-        d.forEach(function (y, x) {
-            g.selectAll(".nodes")
-                .data(y).enter()
-                .append("circle")
-                .attr('r', cfg.radius)
-                .attr("alt", function (j) {
-                    let maxFactor = 0
-                    for (const key in j) {
-                        maxFactor = Math.max(j[key], maxFactor)
-                    }
-                    return maxFactor
-                })
-                .attr("cx", function (j, i) {
-                    // Iterate over the object's properties
-                    let maxFactor = 0
-                    for (const key in j) {
+        factors.forEach(function (key){
+
+
+            d.forEach(function (y, x) {
+                g.selectAll(".nodes")
+                    .data(y).enter()
+                    .append("circle")
+                    .attr('r', cfg.radius)
+                    .attr("alt", function (j) {
+                        return j[key]
+                    })
+                    .attr("cx", function (j, i) {
+                        // Iterate over the object's properties
                         dataTemps.push([
-                            cfg.w / 2 * (1 - (parseFloat(Math.max(j[key], 0)) / cfg.maxTemp) * cfg.factor * Math.sin(i * cfg.radians / total)),
-                            cfg.h / 2 * (1 - (parseFloat(Math.max(j[key], 0)) / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total))])
-                        maxFactor = Math.max(j[key], maxFactor)
-                    }
+                            cfg.w / 2 * (1 - (parseFloat((j[key])) / cfg.maxTemp) * cfg.factor * Math.sin(i * cfg.radians / total)),
+                            cfg.h / 2 * (1 - (parseFloat((j[key])) / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total))])
 
-                    return cfg.w / 2 * (1 - (maxFactor / cfg.maxTemp) * cfg.factor * Math.sin(i * cfg.radians / total))
-                })
-                .attr("cy", function (j, i) {
-                    let maxFactor = 0
-                    for (const key in j) {
-                        maxFactor = Math.max(j[key], maxFactor)
-                    }
-                    return cfg.h / 2 * (1 - (maxFactor / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total));
-                })
-                .attr("class", "lowOpacityOnHover year" + years[i++])
-                .on("mouseover", onMouseOverLegend)
-                .on("mouseout", onMouseOutLegend)
-                .attr("data-id", function (j) { return j.month })
-                .style("fill", cfg.color(series)).style("fill-opacity", .9)
-                .append("title")
-                .text(function (j) {
-                    let maxFactor = 0
-                    for (const key in j) {
-                        maxFactor = Math.max(j[key], maxFactor)
-                    }
-                    return maxFactor })
-
-            series++;
-        });
-        for (let i = 0; i < years.length; i++) {
+                        return cfg.w / 2 * (1 - (j[key] / cfg.maxTemp) * cfg.factor * Math.sin(i * cfg.radians / total))
+                    })
+                    .attr("cy", function (j, i) {
+                        return cfg.h / 2 * (1 - (j[key] / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total));
+                    })
+                    .attr("class", "lowOpacityOnHover year" + locations[i++])
+                    .on("mouseover", onMouseOverLegend)
+                    .on("mouseout", onMouseOutLegend)
+                    .attr("data-id", function (j) { return key })
+                    .style("fill", cfg.color(series)).style("fill-opacity", .9)
+                    .append("title")
+                    .text(function (j) {
+                        return j[key] })
+                series++;
+            });
+        })
+        for (let i = 0; i < locations.length; i++) {
             g.append("circle")
                 .attr("cx", 510)
                 .attr("cy", 0 + i * 14)
                 .attr("r", 6)
                 .style("fill", cfg.color(i))
-                .attr("class", "lowOpacityOnHover year" + years[i])
+                .attr("class", "lowOpacityOnHover year" + locations[i])
                 .on("mouseover", onMouseOverLegend)
                 .on("mouseout", onMouseOutLegend);
             g.append("text")
                 .attr("x", 520)
                 .attr("y", 2 + i * 14)
-                .text(years[i])
+                .text(locations[i])
                 .style("font-size", "15px")
-                .attr("class", "lowOpacityOnHover year" + years[i])
+                .attr("class", "lowOpacityOnHover year" + locations[i])
                 .attr("alignment-baseline", "middle")
                 .on("mouseover", onMouseOverLegend)
                 .on("mouseout", onMouseOutLegend);
