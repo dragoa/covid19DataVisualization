@@ -182,17 +182,31 @@ var RadarChart = {
                 .data(y).enter()
                 .append("circle")
                 .attr('r', cfg.radius)
-                .attr("alt", function (j) { console.log(j.location);return Math.max(j.temp, 0) })
+                .attr("alt", function (j) {
+                    let maxFactor = 0
+                    for (const key in j) {
+                        maxFactor = Math.max(j[key], maxFactor)
+                    }
+                    return maxFactor
+                })
                 .attr("cx", function (j, i) {
-                    console.log(i)
-                    dataTemps.push([
-                        cfg.w / 2 * (1 - (parseFloat(Math.max(j.temp, 0)) / cfg.maxTemp) * cfg.factor * Math.sin(i * cfg.radians / total)),
-                        cfg.h / 2 * (1 - (parseFloat(Math.max(j.temp, 0)) / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total))
-                    ]);
-                    return cfg.w / 2 * (1 - (Math.max(j.temp, 0) / cfg.maxTemp) * cfg.factor * Math.sin(i * cfg.radians / total));
+                    // Iterate over the object's properties
+                    let maxFactor = 0
+                    for (const key in j) {
+                        dataTemps.push([
+                            cfg.w / 2 * (1 - (parseFloat(Math.max(j[key], 0)) / cfg.maxTemp) * cfg.factor * Math.sin(i * cfg.radians / total)),
+                            cfg.h / 2 * (1 - (parseFloat(Math.max(j[key], 0)) / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total))])
+                        maxFactor = Math.max(j[key], maxFactor)
+                    }
+
+                    return cfg.w / 2 * (1 - (maxFactor / cfg.maxTemp) * cfg.factor * Math.sin(i * cfg.radians / total))
                 })
                 .attr("cy", function (j, i) {
-                    return cfg.h / 2 * (1 - (Math.max(j.temp, 0) / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total));
+                    let maxFactor = 0
+                    for (const key in j) {
+                        maxFactor = Math.max(j[key], maxFactor)
+                    }
+                    return cfg.h / 2 * (1 - (maxFactor / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total));
                 })
                 .attr("class", "lowOpacityOnHover year" + years[i++])
                 .on("mouseover", onMouseOverLegend)
@@ -200,7 +214,12 @@ var RadarChart = {
                 .attr("data-id", function (j) { return j.month })
                 .style("fill", cfg.color(series)).style("fill-opacity", .9)
                 .append("title")
-                .text(function (j) { return Math.max(j.temp, 0) })
+                .text(function (j) {
+                    let maxFactor = 0
+                    for (const key in j) {
+                        maxFactor = Math.max(j[key], maxFactor)
+                    }
+                    return maxFactor })
 
             series++;
         });
@@ -230,7 +249,7 @@ var RadarChart = {
 var mycfg = {
     w: 600,
     h: 600,
-    maxTemp: 37,
+    maxTemp: 80,
     minTemp: 0,
     levels: 10,
     ExtraWidthX: 100
