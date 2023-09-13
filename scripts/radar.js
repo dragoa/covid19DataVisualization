@@ -21,15 +21,15 @@ var RadarChart = {
         };
 
         function onMouseOverLegend(event) {
-            var yearClass = event.target.classList[1];
-            d3.selectAll(".lowOpacityOnHover")
+            var location_Class = event.target.classList[1];
+            d3.selectAll(".Area_location")
                 .style("opacity", "0.1")
-            d3.selectAll("." + yearClass)
+            d3.selectAll("." + location_Class)
                 .style("opacity", "1")
         }
 
         function onMouseOutLegend(event) {
-            d3.selectAll(".lowOpacityOnHover")
+            d3.selectAll(".Area_location")
                 .style("opacity", "1")
         }
 
@@ -41,9 +41,9 @@ var RadarChart = {
             }
         }
         //cfg.maxTemp = Math.max(cfg.maxTemp, d3.max(d, function (i) { return d3.max(i.map(function (o) { return o.temp; })) }));
-        // var allYear = (d[0].map(function (i, j) { return i.month }));
-        var allYear = ["1", "2", "3", "4"]
-        var total = allYear.length;
+        // var allLocations = (d[0].map(function (i, j) { return i.month }));
+        var allLocations = ["1", "2", "3", "4"]
+        var total = allLocations.length;
         var radius = cfg.factor * Math.min(cfg.w / 2, cfg.h / 2);
         var Format = d => parseInt(d) + " per hundred";
         console.log("Formet"+Format)
@@ -60,7 +60,7 @@ var RadarChart = {
         for (var j = 0; j < cfg.levels - 1; j++) {
             var levelFactor = cfg.factor * radius * ((j + 1) / cfg.levels);
             g.selectAll(".levels")
-                .data(allYear)
+                .data(allLocations)
                 .enter()
                 .append("svg:line")
                 .attr("x1", function (d, i) { return levelFactor * (1 - cfg.factor * Math.sin(i * cfg.radians / total)); })
@@ -96,14 +96,13 @@ var RadarChart = {
         }
 
         var series = 0;
-
-        var year = g.selectAll(".month")
-            .data(allYear)
+        var location_ = g.selectAll(".month")
+            .data(allLocations)
             .enter()
             .append("g")
-            .attr("class", "year");
+            .attr("class", "location_");
 
-        year.append("line")
+        location_.append("line")
             .attr("x1", cfg.w / 2)
             .attr("y1", cfg.h / 2)
             .attr("x2", function (d, i) { return cfg.w / 2 * (1 - cfg.factor * Math.sin(i * cfg.radians / total)); })
@@ -124,7 +123,7 @@ var RadarChart = {
 
         const factors = ['people_vaccinated_per_hundred', 'people_fully_vaccinated_per_hundred', 'average_stringency_index', 'average_containment_index'];
 
-        year.append("text")
+        location_.append("text")
             .attr("class", "legend")
             .text(function (d) { return factors[d - 1] })
             .style("font-family", "sans-serif")
@@ -136,9 +135,8 @@ var RadarChart = {
             .attr("y", function (d, i) { return cfg.h / 2 * (1 - Math.cos(i * cfg.radians / total)) - 20 * Math.cos(i * cfg.radians / total); })
 
         var i = 0;
-        factors.forEach(function (key){
-
-            d.forEach(function (y, x) {
+        d.forEach(function (y, x) {
+            factors.forEach(function (key){
                 dataTemps = [];
                 g.selectAll(".nodes")
                     .data(y, function (j, i) {
@@ -155,7 +153,7 @@ var RadarChart = {
                     .append("polygon")
                     .style("stroke-width", "1px")
                     .style("stroke", cfg.color(series))
-                    .attr("class", "lowOpacityOnHover year" + locations[i++])
+                    .attr("class", "Area_location " + locations[i++])
                     .attr("points", function (d) {
                         var str = "";
                         for (var pti = 0; pti < d.length; pti++) {
@@ -172,10 +170,8 @@ var RadarChart = {
 
         // plot vertical legend
         var i = 0;
-        factors.forEach(function (key){
-
-
-            d.forEach(function (y, x) {
+        d.forEach(function (y, x) {
+            factors.forEach(function (key){
                 g.selectAll(".nodes")
                     .data(y).enter()
                     .append("circle")
@@ -194,7 +190,7 @@ var RadarChart = {
                     .attr("cy", function (j, i) {
                         return cfg.h / 2 * (1 - (j[key] / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total));
                     })
-                    .attr("class", "lowOpacityOnHover year" + locations[i++])
+                    .attr("class", "Area_location location_" + locations[i++])
                     .on("mouseover", onMouseOverLegend)
                     .on("mouseout", onMouseOutLegend)
                     .attr("data-id", function (j) { return key })
@@ -211,7 +207,7 @@ var RadarChart = {
                 .attr("cy", 0 + i * 14)
                 .attr("r", 6)
                 .style("fill", cfg.color(i))
-                .attr("class", "lowOpacityOnHover year" + locations[i])
+                .attr("class", "Area_location location_" + locations[i])
                 .on("mouseover", onMouseOverLegend)
                 .on("mouseout", onMouseOutLegend);
             g.append("text")
@@ -219,7 +215,7 @@ var RadarChart = {
                 .attr("y", 2 + i * 14)
                 .text(locations[i])
                 .style("font-size", "15px")
-                .attr("class", "lowOpacityOnHover year" + locations[i])
+                .attr("class", "Area_location location_" + locations[i])
                 .attr("alignment-baseline", "middle")
                 .on("mouseover", onMouseOverLegend)
                 .on("mouseout", onMouseOutLegend);
