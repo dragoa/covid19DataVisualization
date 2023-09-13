@@ -46,6 +46,7 @@ var RadarChart = {
         var total = allYear.length;
         var radius = cfg.factor * Math.min(cfg.w / 2, cfg.h / 2);
         var Format = d => parseInt(d) + " per hundred";
+        console.log("Formet"+Format)
         d3.select(id).select("svg").remove();
 
         var g = d3.select(id)
@@ -140,10 +141,18 @@ var RadarChart = {
             dataTemps = [];
             g.selectAll(".nodes")
                 .data(y, function (j, i) {
-                    dataTemps.push([
-                        cfg.w / 2 * (1 - (parseFloat(Math.max(j.temp, 0)) / cfg.maxTemp) * cfg.factor * Math.sin(i * cfg.radians / total)),
-                        cfg.h / 2 * (1 - (parseFloat(Math.max(j.temp, 0)) / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total))
-                    ]);
+                    const targetValue = "0"; // The value you want to find
+                    const matchingKeys = [];
+                    delete j.location
+                    delete j.date
+                    delete j.gdp_per_capita
+
+                    // Iterate over the object's properties
+                    for (const key in j) {
+                        dataTemps.push([
+                                cfg.w / 2 * (1 - (parseFloat(Math.max(j[key], 0)) / cfg.maxTemp) * cfg.factor * Math.sin(i * cfg.radians / total)),
+                                cfg.h / 2 * (1 - (parseFloat(Math.max(j[key], 0)) / cfg.maxTemp) * cfg.factor * Math.cos(i * cfg.radians / total))])
+                    }
                 });
             dataTemps.push(dataTemps[0]);
             g.selectAll(".area")
