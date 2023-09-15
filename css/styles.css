@@ -11438,3 +11438,17 @@ footer.footer {
 #legend_map{
     margin-bottom: 0;
 }
+
+/* Style for the fixed iframe container */
+.iframe-container {
+    width: 100%;
+    height: 800px;
+    overflow: hidden!important; /* Hide the scrollbar */
+}
+
+/* Style for the iframe itself */
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none; /* Remove iframe border if needed */
+}
