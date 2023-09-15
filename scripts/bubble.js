@@ -290,32 +290,6 @@ d3.csv("../assets/data/bubblechart/gdp_vaccination_data.csv").then(function (dat
         .attr("class","leg")
         .attr("id", function (d) { return "leg_" + d.key; })
         .style("fill", function (d) { return d.color; })
-        .on("mouseover", function (event, d) {
-            // Get the id of the rect element
-            let legId = this.id.split("_")[1];
-            greyOut()
-
-            // Highlight the corresponding line
-            svg5.select(".bubble."+legId)
-                .style("opacity", 1)
-                .style("fill", myColor(legId));
-            svg5.select("#rect_"+legId)
-                .style("stroke-width", "3px")
-                .style("opacity", 1)
-                .style("fill", myColor(legId));
-
-            svg5.select("#leg_"+legId)
-                .style("stroke-width", "1px")
-                .style("opacity", 1)
-                .style("fill", myColor(legId));
-
-            svg5.select("#gdpPerCapitaCountry_"+legId)
-                .style("stroke-width", "1px")
-                .style("opacity", 1)
-                .style("fill", myColor(legId));
-            showTooltip(event, d)
-        })
-        .on("mouseout", doNotHighlight);
 
         legend.append("text")
             .attr("x", 60)
