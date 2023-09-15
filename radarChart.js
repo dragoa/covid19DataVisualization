@@ -332,4 +332,7 @@ function RadarChart(id, data, options) {
     svg.select(".legendOrdinal")
         .call(legendOrdinal);
 
-}//RadarChart
+}
+
+//RadarChart
+
