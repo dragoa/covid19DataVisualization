@@ -5,11 +5,12 @@
     <title>Smoothed D3.js Radar Chart</title>
 
     <!-- Google fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 
     <!-- D3.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.3.0/d3-legend.js" charset="utf-8"></script>
 
     <style>
         body {
@@ -22,11 +23,6 @@
             cursor: default;
         }
 
-        .legend {
-            font-family: 'Raleway', sans-serif;
-            fill: #333333;
-        }
-
         .tooltip {
             fill: #333333;
         }
@@ -36,8 +32,7 @@
 <body>
 
 <div class="radarChart"></div>
-<script type="text/javascript" src="scripts/d3.v7.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.3.0/d3-legend.js" charset="utf-8"></script>
+
 <script src="radarChart.js"></script>
 <script>
 
@@ -48,24 +43,21 @@
     //////////////////////////////////////////////////////////////
 
     var margin = {top: 100, right: 100, bottom: 100, left: 100},
+        legendPosition = {x: 25, y: 25},
         width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
         height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 
-    //////////////////////////////////////////////////////////////
-    ////////////////////////// Data //////////////////////////////
-    //////////////////////////////////////////////////////////////
-
-    //////////////////////////////////////////////////////////////
-    //////////////////// Draw the Chart //////////////////////////
-    //////////////////////////////////////////////////////////////
-
-    var color = d3.scaleOrdinal(d3.schemeCategory10)
+    const colors = ["#dbdb8d", "#17becf", "#9edae5", "#5254a3", "#6b6ecf", "#9c9ede" ,"#f7b6d2", "#bcbd22", "#e377c2", "#393b79","#e7ba52", "#1f77b4", "#637939", "#8ca252","#2ca02c", "#b5cf6b", "#8c6d31", "#bd9e39", "#aec7e8", "#ff7f0e", "#ffbb78", "#98df8a",  "#ff9896", "#9467bd", "#c5b0d5","#d62728", "#8c564b", "#c49c94", "#7f7f7f"];
+    var color = d3.scale.ordinal()
+        .range(colors);
 
     var radarChartOptions = {
         w: width,
         h: height,
         margin: margin,
+        legendPosition: legendPosition,
         maxValue: 0.5,
+        wrapWidth: 60,
         levels: 5,
         roundStrokes: true,
         color: color,
@@ -74,9 +66,8 @@
         value: "value"
     };
 
-    // Load data from a JSON file
-    d3.json("./assets/data/radar/radar1.json").then(function(data) {
-        // Call the RadarChart function with the loaded data
+    //Load the data and Call function to draw the Radar chart
+    d3.json("./assets/data/radar/radar1.json", function(error, data){
         RadarChart(".radarChart", data, radarChartOptions);
     });
 </script>
