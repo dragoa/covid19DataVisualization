@@ -1,4 +1,4 @@
-location,date,gdp_per_capita,people_vaccinated_per_hundred,people_fully_vaccinated_per_hundred,location,average_stringency_index,average_containment_index
+location,date,gdp_per_capita,people_vaccinated_per_hundred,people_fully_vaccinated_per_hundred,average_stringency_index,average_containment_index
 Latvia,2020-07-20,25063.846,0,0,51.63832167832175,50.13643356643369
 Germany,2020-07-20,45229.245,0,0,57.25012738853513,54.015923566878946
 Luxembourg,2020-07-20,94277.965,0,0,50.13783783783781,48.77000000000018
