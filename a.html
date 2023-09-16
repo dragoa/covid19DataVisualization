@@ -31,10 +31,43 @@
 </head>
 <body>
 
+<div class="form-check3">
+    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio6" onchange="handlePaymentChange4(event)" checked>
+    <label class="form-check-label" for="flexRadio6">
+        1st Wave
+    </label>
+</div>
+<div class="form-check3">
+    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio7" onchange="handlePaymentChange4(event)">
+    <label class="form-check-label" for="flexRadio7">
+        2nd wave
+    </label>
+</div>
+<div class="form-check3">
+    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio8" onchange="handlePaymentChange4(event)">
+    <label class="form-check-label" for="flexRadio8">
+        3rd wave
+    </label>
+</div>
 <div class="radarChart"></div>
 
-<script src="radarChart.js"></script>
+<script src="scripts/radarChart.js"></script>
 <script>
+
+    let dataset = ""
+
+    function handlePaymentChange4(event) {
+        const wave = event.target.id
+
+        if(wave === "flexRadio6")
+            dataset = "./assets/data/radar/radar1.json"
+        else if(wave === "flexRadio7")
+            dataset = "./assets/data/radar/radar2.json"
+        else if(wave === "flexRadio8")
+            dataset = "./assets/data/radar/radar3.json"
+        else
+            dataset = "./assets/data/radar/radar1.json"
+    }
 
     /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
 
@@ -67,7 +100,7 @@
     };
 
     //Load the data and Call function to draw the Radar chart
-    d3.json("./assets/data/radar/radar1.json", function(error, data){
+    d3.json(dataset, function(error, data){
         RadarChart(".radarChart", data, radarChartOptions);
     });
 </script>
