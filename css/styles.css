@@ -11442,7 +11442,7 @@ footer.footer {
 /* Style for the fixed iframe container */
 .iframe-container {
     width: 100%;
-    height: 800px;
+    height: 870px;
     overflow: hidden!important; /* Hide the scrollbar */
 }
 

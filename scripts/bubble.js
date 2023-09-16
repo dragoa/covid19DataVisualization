@@ -387,7 +387,7 @@ function drawBubble(id, dataset, wave) {
             .attr('x', xLabel)
             .attr('y', function(d){ return yCircle - size(d) } )
             .text( function(d){ return d } )
-            .style("font-size", 11)
+            .style("font-size", 13)
             .attr('alignment-baseline', 'middle')
     })
 }
