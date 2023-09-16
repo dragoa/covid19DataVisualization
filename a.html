@@ -54,27 +54,6 @@
 <script src="scripts/radarChart.js"></script>
 <script>
 
-    let dataset = ""
-
-    function handlePaymentChange4(event) {
-        const wave = event.target.id
-
-        if(wave === "flexRadio6")
-            dataset = "./assets/data/radar/radar1.json"
-        else if(wave === "flexRadio7")
-            dataset = "./assets/data/radar/radar2.json"
-        else if(wave === "flexRadio8")
-            dataset = "./assets/data/radar/radar3.json"
-        else
-            dataset = "./assets/data/radar/radar1.json"
-    }
-
-    /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
-
-    //////////////////////////////////////////////////////////////
-    //////////////////////// Set-Up //////////////////////////////
-    //////////////////////////////////////////////////////////////
-
     var margin = {top: 100, right: 100, bottom: 100, left: 100},
         legendPosition = {x: 25, y: 25},
         width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
@@ -99,8 +78,28 @@
         value: "value"
     };
 
+    let datasets = "./assets/data/radar/radar1.json"
+    
+    function handlePaymentChange4(event) {
+        const wave = event.target.id
+
+        if(wave === "flexRadio6")
+            datasets = "./assets/data/radar/radar1.json"
+        else if(wave === "flexRadio7")
+            datasets = "./assets/data/radar/radar2.json"
+        else if(wave === "flexRadio8")
+            datasets = "./assets/data/radar/radar3.json"
+        else
+            datasets = "./assets/data/radar/radar1.json"
+
+        //Load the data and Call function to draw the Radar chart
+        d3.json(datasets, function(error, data){
+            RadarChart(".radarChart", data, radarChartOptions);
+        });
+    }
+
     //Load the data and Call function to draw the Radar chart
-    d3.json(dataset, function(error, data){
+    d3.json(datasets, function(error, data){
         RadarChart(".radarChart", data, radarChartOptions);
     });
 </script>

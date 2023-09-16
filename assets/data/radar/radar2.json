@@ -6,27 +6,27 @@
     { "country":"Finland", "axis": "Average Containment Index", "value": 46.54438202247201 }
   ],
   [
-    { "country":"Finland", "axis": "People Vaccinated per Hundred", "value": 0 },
-    { "country":"Finland", "axis": "People Fully Vaccinated per Hundred", "value": 0 },
-    { "country":"Finland", "axis": "Average Stringency Index", "value": 48.71528662420375 },
-    { "country":"Finland", "axis": "Average Containment Index", "value": 42.34063694267512 }
+    { "country":"Denmark", "axis": "People Vaccinated per Hundred", "value": 60.77 },
+    { "country":"Denmark", "axis": "People Fully Vaccinated per Hundred", "value": 38.25 },
+    { "country":"Denmark", "axis": "Average Stringency Index", "value": 56.16033707865166 },
+    { "country":"Denmark", "axis": "Average Containment Index", "value": 56.66530898876404 }
   ],
   [
-    { "country":"Croatia", "axis": "People Vaccinated per Hundred", "value": 0 },
-    { "country":"Croatia", "axis": "People Fully Vaccinated per Hundred", "value": 0 },
-    { "country":"Croatia", "axis": "Average Stringency Index", "value": 63.84571428571427 },
-    { "country":"Croatia", "axis": "Average Containment Index", "value": 59.18482993197279 }
+    { "country":"Belgium", "axis": "People Vaccinated per Hundred", "value": 65.75 },
+    { "country":"Belgium", "axis": "People Fully Vaccinated per Hundred", "value": 42.29 },
+    { "country":"Belgium", "axis": "Average Stringency Index", "value": 58.44404494382022 },
+    { "country":"Belgium", "axis": "Average Containment Index", "value": 62.15898876404511 }
   ],
   [
-    { "country":"Greece", "axis": "People Vaccinated per Hundred", "value": 0 },
-    { "country":"Greece", "axis": "People Fully Vaccinated per Hundred", "value": 0 },
-    { "country":"Greece", "axis": "Average Stringency Index", "value": 62.378698630137094 },
-    { "country":"Greece", "axis": "Average Containment Index", "value": 53.98657534246579 }
+    { "country":"Netherlands", "axis": "People Vaccinated per Hundred", "value": 62.86 },
+    { "country":"Netherlands", "axis": "People Fully Vaccinated per Hundred", "value": 37.88 },
+    { "country":"Netherlands", "axis": "Average Stringency Index", "value": 64.75005617977541 },
+    { "country":"Netherlands", "axis": "Average Containment Index", "value": 60.901573033708054 }
   ],
   [
-    { "country":"Slovakia", "axis": "People Vaccinated per Hundred", "value": 0 },
-    { "country":"Slovakia", "axis": "People Fully Vaccinated per Hundred", "value": 0 },
-    { "country":"Slovakia", "axis": "Average Stringency Index", "value": 60.118905109489134 },
-    { "country":"Slovakia", "axis": "Average Containment Index", "value": 58.98014598540153 }
+    { "country":"Ireland", "axis": "People Vaccinated per Hundred", "value": 56.66 },
+    { "country":"Ireland", "axis": "People Fully Vaccinated per Hundred", "value": 45.54 },
+    { "country":"Ireland", "axis": "Average Stringency Index", "value": 70.5427808988763 },
+    { "country":"Ireland", "axis": "Average Containment Index", "value": 70.24702247191019 }
   ]
 ]
