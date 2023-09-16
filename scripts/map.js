@@ -31,9 +31,10 @@ function drawMap(id, dataset, colorMap, wave){
             .attr("class", "axis-label")
             .attr("text-anchor", "middle")
             .style("font-size", "20px")
-            .attr("x", (width+margin.right+margin.left)/2)
-            .attr("y", height + margin.bottom)
+            .attr("x", width/3)
+            .attr("y", margin.bottom)
             .text(`${wave} wave average stringency and containment index`)
+            .style("transform", "translate(-20px, 20px)")
             .style("font-weight", "bold")
             .style("font-family", "Fira Sans");
 
