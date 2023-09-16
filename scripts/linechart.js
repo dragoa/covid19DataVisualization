@@ -245,11 +245,12 @@ function drawGraph (id, dataset, deathOptionValue, wave) {
 
                 // Generate HTML for the tooltip
                 const html = "<div>Date: " + d3.timeFormat("%d-%m-%Y")(d.date)+"<br><br>" + "</div>" +
-                    dataForDate.map(d => "<div>" + d.location + ": " + d[deathOptionValue] + "</div>").join("");
+                    dataForDate.map(d => "<div>" + d.location + ": " + (Number(d[deathOptionValue]) % 1 === 0 ? d[deathOptionValue] : parseFloat(d[deathOptionValue]).toFixed(2)) + "</div>").join("");
 
                 tooltip.style("display", "block")
                     .style('left', `${event.x+50}px`)
                     .style('top', `${event.y-200}px`)
+                    .style('font-size','13px')
                     .html(html);
             })
             .on("mouseout", function() {
