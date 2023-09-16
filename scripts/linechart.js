@@ -250,7 +250,7 @@ function drawGraph (id, dataset, deathOptionValue, wave) {
                 tooltip.style("display", "block")
                     .style('left', `${event.x+50}px`)
                     .style('top', `${event.y-200}px`)
-                    .style('font-size','13px')
+                    .style('font-size','14px')
                     .html(html);
             })
             .on("mouseout", function() {
