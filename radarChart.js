@@ -6,6 +6,8 @@
 /////////////////////////////////////////////////////////
 
 function RadarChart(id, data, options) {
+    const colors = ["#dbdb8d", "#17becf", "#9edae5", "#5254a3", "#6b6ecf", "#9c9ede" ,"#f7b6d2", "#bcbd22", "#e377c2", "#393b79","#e7ba52", "#1f77b4", "#637939", "#8ca252","#2ca02c", "#b5cf6b", "#8c6d31", "#bd9e39", "#aec7e8", "#ff7f0e", "#ffbb78", "#98df8a",  "#ff9896", "#9467bd", "#c5b0d5","#d62728", "#8c564b", "#c49c94", "#7f7f7f"];
+    const colorScale = d3.scale.ordinal().range(colors);
     var cfg = {
         w: 600,				//Width of the circle
         h: 600,				//Height of the circle
@@ -20,7 +22,7 @@ function RadarChart(id, data, options) {
         opacityCircles: 0, 			//The opacity of the circles of each blob
         strokeWidth: 2, 			//The width of the stroke around each blob
         roundStrokes: false,			//If true the area and stroke will follow a round path (cardinal-closed)
-        color: d3.scale.category10(),		//Color function
+        color:colorScale,		//Color function
         axisName: "axis",
         areaName:"areaName",
         value: "value",
@@ -182,7 +184,7 @@ function RadarChart(id, data, options) {
             //Dim all blobs
             d3.selectAll(".radarArea")
                 .transition().duration(200)
-                .style("fill-opacity", 0.1);
+                .style("fill-opacity", 0);
             //Bring back the hovered over blob
             d3.select(this)
                 .transition().duration(200)
@@ -293,7 +295,7 @@ function RadarChart(id, data, options) {
         //Dim all blobs
         d3.selectAll(".radarArea")
             .transition().duration(200)
-            .style("fill-opacity", 0.1);
+            .style("fill-opacity", 0);
         //Bring back the hovered over blob
         d3.select("." + data[d][0][areaName].replace(/\s+/g, ''))
             .transition().duration(200)
