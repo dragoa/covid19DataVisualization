@@ -5,7 +5,7 @@
 /////////// Inspired by the code of alangrafu ///////////
 /////////////////////////////////////////////////////////
 
-function RadarChart(id, data, options) {
+function RadarChart(id, data, gdpData, options) {
     const colors = ["#dbdb8d", "#17becf", "#9edae5", "#5254a3", "#6b6ecf", "#9c9ede" ,"#f7b6d2", "#bcbd22", "#e377c2", "#393b79","#e7ba52", "#1f77b4", "#637939", "#8ca252","#2ca02c", "#b5cf6b", "#8c6d31", "#bd9e39", "#aec7e8", "#ff7f0e", "#ffbb78", "#98df8a",  "#ff9896", "#9467bd", "#c5b0d5","#d62728", "#8c564b", "#c49c94", "#7f7f7f"];
     const colorScale = d3.scale.ordinal().range(colors);
     var cfg = {
@@ -314,24 +314,61 @@ function RadarChart(id, data, options) {
     /////////////////// Draw the Legend /////////////////////
     /////////////////////////////////////////////////////////
 
-    svg.append("g")
-        .attr("class", "legendOrdinal")
-        .attr("transform", "translate(" + cfg["legendPosition"]["x"] + "," + cfg["legendPosition"]["y"] + ")");
+    // Sort the gdpData array based on GDP per capita values in descending order
+    // Sort the gdpData array based on GDP per capita values in descending order
+gdpData.sort(function (a, b) {
+    return b[4].value - a[4].value;
+});
 
-    var legendOrdinal = d3.legend.color()
-        //d3 symbol creates a path-string, for example
-        //"M0,-8.059274488676564L9.306048591020996,
-        //8.059274488676564 -9.306048591020996,8.059274488676564Z"
-        .shape("path", d3.svg.symbol().type("square").size(80)())
-        .shapePadding(8)
-        .scale(cfg.color)
-        .labels(cfg.color.domain().map(function(d){
-            return data[d][0][areaName];
-        }))
-        .on("cellover", function(d){ cellover(d); })
-        .on("cellout", function(d) { cellout(); });
+// Create an array of legend labels in the sorted order
+var legendLabels = gdpData.map(function (d) {
+    return d[4].country;
+});
 
-    svg.select(".legendOrdinal")
-        .call(legendOrdinal);
+// Create the legend using the sorted legend labels
+var legendOrdinal = d3.legend.color()
+    .shape("path", d3.svg.symbol().type("square").size(80)())
+    .shapePadding(8)
+    .scale(cfg.color)
+    .labels(legendLabels)
+    .on("cellover", function(d){ cellover(d); })
+    .on("cellout", function(d) { cellout(); });
+
+svg.append("g")
+    .attr("class", "legendOrdinal")
+    .attr("transform", "translate(" + cfg["legendPosition"]["x"] + "," + cfg["legendPosition"]["y"] + ")")
+    .call(legendOrdinal);
+
+
+    
+    // Create a bubble legend using the GDP data
+    var legend = svg.append("g")
+        .attr("class", "legend")
+        .attr("transform", "translate(" + (margin.left+cfg.w) + "," + (margin.top+cfg.h) + ")");
+
+    // Calculate the maximum GDP value for scaling the bubble size
+    var maxGDP = d3.max(gdpData, function(d) { return d[4].value; });
+    var radiusScale = d3.scale.sqrt()
+        .domain([0, maxGDP])
+        .range([0, 20]);
+
+    // Add circles and country names to the legend
+    var legendItems = legend.selectAll(".legend-item")
+        .data(gdpData)
+        .enter().append("g")
+        .attr("class", "legend-item")
+        .attr("transform", function(d, i) {
+            return "translate(0," + (i * 25) + ")";
+        });
+
+    legendItems.append("circle")
+        .attr("r", function(d) { return radiusScale(d[4].value); })
+        .style("fill", function(d, i) { return cfg.color(i); });
+
+    legendItems.append("text")
+        .attr("x", 30)
+        .attr("y", 5)
+        .text(function(d) { return d[4].country; });
+
 
 }//RadarChart

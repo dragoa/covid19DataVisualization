@@ -294,6 +294,24 @@ function drawBubble(id, dataset, wave) {
                 d3.select(this).attr("stroke", "none")
             })
 
+        // Add legend for size
+    svg5.append("g")
+        .attr("class", "legendSize")
+        .attr("transform", "translate(90, 10)")
+    var legendSize = d3.legendSize()
+        .scale(z)
+        .shape('circle')
+        .shapePadding(0)
+        .labelAlign('end')
+        .orient('vertical')
+        .labels(d3.legendHelpers.thresholdLabels)
+        .labelFormat(d3.format(".1s"));
+    svg5.select(".legendSize")
+        .call(legendSize)
+        .selectAll("circle")
+        .attr("fill", "#f8f9fa")
+        .attr("stroke", "black");
+
         // Draw legend text and values
         legend.append("text")
             .attr("x", 25)

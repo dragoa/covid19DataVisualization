@@ -88,28 +88,41 @@
     };
 
     let datasets = "./assets/data/radar/radar1.json"
+    let gdpData = "./assets/data/radar/radar1_gdp.json"
     
     function handlePaymentChange4(event) {
         const wave = event.target.id
 
-        if(wave === "flexRadio6")
+        if(wave === "flexRadio6"){
             datasets = "./assets/data/radar/radar1.json"
-        else if(wave === "flexRadio7")
+            gdpData = "./assets/data/radar/radar1_gdp.json"
+        }
+        else if(wave === "flexRadio7"){
             datasets = "./assets/data/radar/radar2.json"
-        else if(wave === "flexRadio8")
+            gdpData = "./assets/data/radar/radar2_gdp.json"
+        }
+        else if(wave === "flexRadio8"){
             datasets = "./assets/data/radar/radar3.json"
-        else
+            gdpData = "./assets/data/radar/radar3_gdp.json"
+        }
+        else{
             datasets = "./assets/data/radar/radar1.json"
+            gdpData = "./assets/data/radar/radar1_gdp.json"
+        }
 
-        //Load the data and Call function to draw the Radar chart
-        d3.json(datasets, function(error, data){
-            RadarChart(".radarChart", data, radarChartOptions);
+        // Load the data and call the function to draw the Radar chart
+        d3.json(datasets, function (error, data) {
+            d3.json(gdpData, function (error, data2) {
+                RadarChart(".radarChart", data, data2, radarChartOptions);
+            });
         });
     }
 
-    //Load the data and Call function to draw the Radar chart
-    d3.json(datasets, function(error, data){
-        RadarChart(".radarChart", data, radarChartOptions);
+    // Initial load with default datasets and GDP data
+    d3.json(datasets, function (error, data) {
+        d3.json(gdpData, function (error, data2) {
+            RadarChart(".radarChart", data, data2, radarChartOptions);
+        });
     });
 </script>
 </body>
