@@ -69,8 +69,8 @@ function RadarChart(id, data, options) {
 
     //Initiate the radar chart SVG
     var svg = d3.select(id).append("svg")
-        .attr("width",  cfg.w + cfg.margin.left + cfg.margin.right)
-        .attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
+        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+        .attr("preserveAspectRatio", "xMidYMid meet")
         .attr("class", "radar"+id);
     //Append a g element
     var g = svg.append("g")
@@ -141,9 +141,9 @@ function RadarChart(id, data, options) {
     //Append the labels at each axis
     axis.append("text")
         .attr("class", "legend")
-        .style("font-size", "11px")
+        .style("font-size", "9px")
         .attr("text-anchor", "middle")
-        .attr("dy", "0.35em")
+        .attr("dy", "0.4em")
         .attr("x", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.cos(angleSlice*i - Math.PI/2); })
         .attr("y", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.sin(angleSlice*i - Math.PI/2); })
         .text(function(d){return d})
@@ -322,8 +322,8 @@ function RadarChart(id, data, options) {
         //d3 symbol creates a path-string, for example
         //"M0,-8.059274488676564L9.306048591020996,
         //8.059274488676564 -9.306048591020996,8.059274488676564Z"
-        .shape("path", d3.svg.symbol().type("square").size(150)())
-        .shapePadding(10)
+        .shape("path", d3.svg.symbol().type("square").size(80)())
+        .shapePadding(8)
         .scale(cfg.color)
         .labels(cfg.color.domain().map(function(d){
             return data[d][0][areaName];

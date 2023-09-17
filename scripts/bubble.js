@@ -346,14 +346,14 @@ function drawBubble(id, dataset, wave) {
 
         // The scale you use for bubble size
         var size = d3.scaleSqrt()
-            .domain([1, 100])  // What's in the data, let's say it is percentage
-            .range([1, 70])  // Size in pixel
+            .domain([1, Math.max(...gdpPerCapita)]).nice()
+            .range([3, 35]);
 
         // Add legend: circles
-        var valuesToShow = [10, 30, 50, 100]
+        var valuesToShow = [10, 50, 100]
         var xCircle = 150
         var xLabel = 380
-        var yCircle = 160
+        var yCircle = 100
         svg5
             .selectAll("legend")
             .data(valuesToShow)
