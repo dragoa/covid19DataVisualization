@@ -1,4 +1,4 @@
-location,date,gdp_per_capita,people_vaccinated_per_hundred,people_fully_vaccinated_per_hundred,location,average_stringency_index,average_containment_index
+location,date,gdp_per_capita,people_vaccinated_per_hundred,people_fully_vaccinated_per_hundred,average_stringency_index,average_containment_index
 Denmark,2021-07-10,46682.515,60.77,38.25,56.16033707865166,56.66530898876404
 Poland,2021-07-09,27216.445,43.59,37.48,59.599353932584236,57.54387640449433
 Czechia,2021-07-10,32605.906,50.19,36.56,60.38912921348315,65.15783707865178

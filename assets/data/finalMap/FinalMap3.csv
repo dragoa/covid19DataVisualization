@@ -1,4 +1,4 @@
-location,date,gdp_per_capita,people_vaccinated_per_hundred,people_fully_vaccinated_per_hundred,location,average_stringency_index,average_containment_index
+location,date,gdp_per_capita,people_vaccinated_per_hundred,people_fully_vaccinated_per_hundred,average_stringency_index,average_containment_index
 Slovenia,2022-07-05,31400.84,59.71,57.66,26.43335185185212,37.86990740740712
 Croatia,2023-02-15,22669.797,57.59,55.85,22.321500000000068,36.850648148148345
 Austria,2022-12-13,45436.686,77.14,76.32,42.28642592592546,58.77894444444379

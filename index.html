@@ -544,7 +544,38 @@
                         </div>
                         <div class="iframe-container">
                             <iframe id="d3v6frame" src="a.html" style="overflow: hidden;"></iframe>
+                        </div><br>
+                        <div class="d-flex justify-content-center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadio11" onchange="handlePaymentChange6(event)" checked>
+                                <label class="form-check-label" for="flexRadio11">
+                                    1st Wave
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadio12" onchange="handlePaymentChange6(event)">
+                                <label class="form-check-label" for="flexRadio12">
+                                    2nd wave
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadio13" onchange="handlePaymentChange6(event)">
+                                <label class="form-check-label" for="flexRadio13">
+                                    3rd wave
+                                </label>
+                            </div>
                         </div>
+                        <div class="d-flex justify-content-center">
+                            <label hidden="hidden" for="map2">Select option for new deaths</label>
+                            <select class="btn btn-outline-success shadow-none" autocomplete="off" id="map2" required onchange="handlePaymentChange6(event)">
+                                <option value="gdp_per_capita" selected>GDP per capita</option>
+                                <option value="people_vaccinated_per_hundred">People vaccinated per hundred</option>
+                                <option value="people_fully_vaccinated_per_hundred">People fully vaccinated per hundred</option>
+                                <option value="average_stringency_index">Average stringency index</option>
+                                <option value="average_containment_index">Average containment index</option>
+                            </select>
+                        </div>
+                        <div id="mapFinal"></div>
                     </div>
                 </div>
             </div>
@@ -574,6 +605,7 @@
     <script src="scripts/map.js"></script>
     <script src="scripts/barplot.js"></script>
     <script src="scripts/bubble.js"></script>
+    <script src="scripts/finalMap.js"></script>
 
 </body>
 </html>
