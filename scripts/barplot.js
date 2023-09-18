@@ -1,5 +1,6 @@
 function drawBarplot(id, dataset, wave) {
 
+    // remove all previous svg
     d3.select(id).selectAll("svg").remove();
 
     // Set the dimensions and margins of the graph
@@ -49,7 +50,7 @@ function drawBarplot(id, dataset, wave) {
             .attr("transform", `translate(0, ${height})`)
             .call(d3.axisBottom(x));
 
-        // Another scale for subgroup position?
+        // Another scale for subgroup position
         const ySubgroup = d3.scaleBand()
             .domain(subgroups)
             .range([0, y.bandwidth()])
@@ -138,7 +139,7 @@ function drawBarplot(id, dataset, wave) {
 
 drawBarplot("#barplot2", "assets/data/vaccine/pop_vaccinated_2.csv", "2nd")
 
-function handlePaymentChange3(event) {
+function handleBarplot(event) {
     const wave = event.target.id
 
     if(wave === "flexRadio4")
