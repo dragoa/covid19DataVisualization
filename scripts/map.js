@@ -31,9 +31,19 @@ function drawMap(id, dataset, colorMap, wave){
             .attr("class", "axis-label")
             .attr("text-anchor", "middle")
             .style("font-size", "20px")
-            .attr("x", width/3)
+            .attr("x", width/3+20)
             .attr("y", margin.bottom)
-            .text(`${wave} wave average stringency and containment index`)
+            .text(`${wave} wave MAP: average between stringency and containment`)
+            .style("transform", "translate(-20px, 20px)")
+            .style("font-weight", "bold")
+            .style("font-family", "Fira Sans");
+        svg.append("text")
+            .attr("class", "axis-label")
+            .attr("text-anchor", "middle")
+            .style("font-size", "20px")
+            .attr("x", width/3+20)
+            .attr("y", margin.bottom + 25) // Adjust the 'y' position for the second line
+            .text("policies adopted against Covid-19 by all EU's countries in %")
             .style("transform", "translate(-20px, 20px)")
             .style("font-weight", "bold")
             .style("font-family", "Fira Sans");

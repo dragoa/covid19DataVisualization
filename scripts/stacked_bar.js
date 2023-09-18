@@ -119,7 +119,7 @@ function drawStackedBar (id, dataset, wave) {
             .attr("y", -margin.top+35)
             .attr("text-anchor", "middle")
             .style("font-size", "20px")
-            .text(`${wave} wave STACKED BARS: Top 5 countries of the first Covid-19 wave with their correspondent accumulated percentages of the `)
+            .text(`${wave} wave STACKED BARS: Top 5 countries with their correspondent accumulated percentages of the `)
             .style("font-weight", "bold")
             .style("font-family", "Fira Sans");
 
@@ -128,7 +128,7 @@ function drawStackedBar (id, dataset, wave) {
             .attr("y", -margin.top+65)
             .attr("text-anchor", "middle")
             .style("font-size", "20px")
-            .text(" average of the stringency and containment indexes against Covid-19")
+            .text(" average of the stringency and the average containment indexes against Covid-19")
             .style("font-weight", "bold")
             .style("font-family", "Fira Sans");
 

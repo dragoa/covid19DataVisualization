@@ -324,27 +324,10 @@ gdpData.sort(function (a, b) {
 var legendLabels = gdpData.map(function (d) {
     return d[4].country;
 });
-
-// Create the legend using the sorted legend labels
-var legendOrdinal = d3.legend.color()
-    .shape("path", d3.svg.symbol().type("square").size(80)())
-    .shapePadding(8)
-    .scale(cfg.color)
-    .labels(legendLabels)
-    .on("cellover", function(d){ cellover(d); })
-    .on("cellout", function(d) { cellout(); });
-
-svg.append("g")
-    .attr("class", "legendOrdinal")
-    .attr("transform", "translate(" + cfg["legendPosition"]["x"] + "," + cfg["legendPosition"]["y"] + ")")
-    .call(legendOrdinal);
-
-
-    
     // Create a bubble legend using the GDP data
     var legend = svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(" + (margin.left+cfg.w+20) + "," + (margin.top+cfg.h) + ")");
+        .attr("transform", "translate(" + (margin.top+cfg["legendPosition"]["x"]+30) + "," + (margin.top) + ")");
 
     // Calculate the maximum GDP value for scaling the bubble size
     var maxGDP = d3.max(gdpData, function(d) { return d[4].value; });
@@ -356,7 +339,7 @@ svg.append("g")
     legend.append("text")
     .attr("x", -50) // Adjust the position as needed
     .attr("y", -30) // Adjust the position as needed
-    .style("font-size", "15px")
+    .style("font-size", "11px")
     .text("GDP per capita");
 
     // Add circles, GDP values, and country names to the legend
@@ -371,11 +354,14 @@ svg.append("g")
     legendItems.append("text")
     .attr("x", 30) // Adjust the position as needed
     .attr("y", 5)
+    .style("font-size", "11px")
     .text(function(d) { return parseFloat(d[4].value).toFixed(0); }); // Display GDP per capita value
 
     legendItems.append("text")
-    .attr("x", -85) // Adjust the position as needed
+    .attr("x", -25) // Adjust the position as needed
     .attr("y", 5)
+    .style("text-anchor", "end")
+    .style("font-size", "11px")
     .text(function(d) { return d[4].country; }); // Display country name
 
     legendItems.append("circle")
