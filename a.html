@@ -33,23 +33,25 @@
 <div id="analysis5" class="fade-in">
     <section class="features-icons bg-light">
         <div class="col-lg-12">
-            <div class="form-check3">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio6" onchange="handlePaymentChange4(event)" checked>
-                <label class="form-check-label" for="flexRadio6">
-                    1st Wave
-                </label>
-            </div>
-            <div class="form-check3">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio7" onchange="handlePaymentChange4(event)">
-                <label class="form-check-label" for="flexRadio7">
-                    2nd wave
-                </label>
-            </div>
-            <div class="form-check3">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio8" onchange="handlePaymentChange4(event)">
-                <label class="form-check-label" for="flexRadio8">
-                    3rd wave
-                </label>
+            <div class="d-flex justify-content-center">
+                <div class="form-check3 form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio6" onchange="handlePaymentChange4(event)" checked>
+                    <label class="form-check-label" for="flexRadio6">
+                        1st Wave
+                    </label>
+                </div>
+                <div class="form-check3 form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio7" onchange="handlePaymentChange4(event)">
+                    <label class="form-check-label" for="flexRadio7">
+                        2nd wave
+                    </label>
+                </div>
+                <div class="form-check3 form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio8" onchange="handlePaymentChange4(event)">
+                    <label class="form-check-label" for="flexRadio8">
+                        3rd wave
+                    </label>
+                </div>
             </div>
             <div class="radarChart"></div>
         </div>
@@ -63,7 +65,7 @@
 <script src="scripts/radarChart.js"></script>
 <script>
 
-    var margin = {top: 50, right: 180, bottom: 350, left: 180},
+    var margin = {top: 80, right: 180, bottom: 350, left: 180},
         legendPosition = {x: 5, y: 25},
         width = Math.min(700, window.innerWidth) - margin.left - margin.right,
         height = Math.min(width, window.innerHeight - margin.top - margin.bottom);
