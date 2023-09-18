@@ -729,6 +729,19 @@ progress {
     margin-right: 100px;
 }
 
+#map2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+#map2 svg{
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+
 .col {
     flex: 1 0 0%;
 }

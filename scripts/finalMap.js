@@ -15,8 +15,8 @@ function drawMap2(id, dataset, colorMap, wave, selectedOptionValue){
     ]).then(function (loadData) {
 
         const margin = {top: 10, right: 100, bottom: 10, left: 100},
-            width = 1000 - margin.left - margin.right,
-            height = 800 - margin.top - margin.bottom;
+            width = 1200 - margin.left - margin.right,
+            height = 900 - margin.top - margin.bottom;
 
         var mapId = document.getElementById(id.replace("#", ""))
         mapId.innerHTML = "";
@@ -33,8 +33,8 @@ function drawMap2(id, dataset, colorMap, wave, selectedOptionValue){
             .style("font-size", "20px")
             .attr("x", width/3)
             .attr("y", margin.bottom)
-            .text(`${wave} wave average stringency and containment index`)
-            .style("transform", "translate(-20px, 20px)")
+            .text(`${wave} wave MAP: all the policies adopted against Covid-19 by all EU's countries.`)
+            .style("transform", "translate(20px, 20px)")
             .style("font-weight", "bold")
             .style("font-family", "Fira Sans");
 
@@ -90,11 +90,11 @@ function drawMap2(id, dataset, colorMap, wave, selectedOptionValue){
                     .style("opacity", "1")
                     .style("stroke", "black")
 
-                const percValue = Math.round(map.get(d.properties.name));
+                const percValue = map.get(d.properties.name).toPrecision(4);
                 let tooltipText;
                 // console.log(percValue)
                 if (percValue !== 0 && percValue) {
-                    tooltipText = "The policies adopted <br>were " + percValue + "% strict";
+                    tooltipText = `The ${selectedOptionValue.replace(/_/g, ' ')} is <br> ${percValue}`;
                 } else if (isNaN(percValue)){
                     tooltipText = "Missing data";
                 }
