@@ -76,6 +76,12 @@ function RadarChart(id, data, gdpData, options) {
     var g = svg.append("g")
         .attr("transform", "translate(" + (cfg.w/2 + cfg.margin.left) + "," + (cfg.h/2 + cfg.margin.top) + ")");
 
+    //Set up the small tooltip for when you hover over a circle
+    const tooltip = d3.select(id)
+        .append("div")
+        .attr("class", "tooltip1 fade-in")
+        .style("display", "none");
+
     /////////////////////////////////////////////////////////
     ////////// Glow filter for some extra pizzazz ///////////
     /////////////////////////////////////////////////////////
@@ -179,8 +185,6 @@ function RadarChart(id, data, gdpData, options) {
         .style("fill", function(d,i) { return cfg.color(i); })
         .style("fill-opacity", cfg.opacityArea)
         .on('mouseover', function (d,i){
-            console.log("d", d);
-            console.log("this", this);
             //Dim all blobs
             d3.selectAll(".radarArea")
                 .transition().duration(200)
@@ -227,36 +231,73 @@ function RadarChart(id, data, gdpData, options) {
         .enter().append("g")
         .attr("class", "radarCircleWrapper");
 
-    //Append a set of invisible circles on top for the mouseover pop-up
-    blobCircleWrapper.selectAll(".radarInvisibleCircle")
-        .data(function(d,i) { return d; })
-        .enter().append("circle")
-        .attr("class", "radarInvisibleCircle")
-        .attr("r", cfg.dotRadius*1.5)
-        .attr("cx", function(d,i){ return rScale(d[value]) * Math.cos(angleSlice*i - Math.PI/2); })
-        .attr("cy", function(d,i){ return rScale(d[value]) * Math.sin(angleSlice*i - Math.PI/2); })
-        .style("fill", "none")
-        .style("pointer-events", "all")
-        .on("mouseover", function(d,i) {
-            newX =  parseFloat(d3.select(this).attr('cx')) - 10;
-            newY =  parseFloat(d3.select(this).attr('cy')) - 10;
+    // Append a set of invisible circles on top for the mouseover pop-up
+blobCircleWrapper.selectAll(".radarInvisibleCircle")
+.data(function(d, i) { return d; })
+.enter().append("circle")
+.attr("class", "radarInvisibleCircle")
+.attr("r", cfg.dotRadius * 1.5)
+.attr("cx", function(d, i) { return rScale(d[value]) * Math.cos(angleSlice * i - Math.PI / 2); })
+.attr("cy", function(d, i) { return rScale(d[value]) * Math.sin(angleSlice * i - Math.PI / 2); })
+.style("fill", "none")
+.style("pointer-events", "all")
+// Mouseover event
+.on("mouseover", function(d, i) {
+    var countryValues = []; // Array to store country name and factor value pairs
 
-            tooltip
-                .attr('x', newX)
-                .attr('y', newY)
-                .text(Format(d[value]))
-                .transition().duration(200)
-                .style('opacity', 1);
-        })
-        .on("mouseout", function(){
-            tooltip.transition().duration(200)
-                .style("opacity", 0);
-        });
+    // Populate the array with country name and factor value pairs
+    for (var j = 0; j < data.length; j++) {
+        var countryName = data[j][0][areaName];
+        var factorValue = 0;
 
-    //Set up the small tooltip for when you hover over a circle
-    var tooltip = g.append("text")
-        .attr("class", "tooltip")
-        .style("opacity", 0);
+        switch (d.axis) {
+            case 'People Vaccinated per Hundred':
+                factorValue = data[j][0][value];
+                break;
+            case 'People Fully Vaccinated per Hundred':
+                factorValue = data[j][1][value];
+                break;
+            case 'Average Stringency Index':
+                factorValue = data[j][2][value];
+                break;
+            case 'Average Containment Index':
+                factorValue = data[j][3][value];
+                break;
+        }
+
+        countryValues.push({ countryName: countryName, factorValue: factorValue });
+    }
+
+    // Sort the array based on factor values in descending order
+    countryValues.sort(function(a, b) {
+        return b.factorValue - a.factorValue;
+    });
+
+    // Calculate newX and newY as before
+    newX = parseFloat(d3.select(this).attr('cx')) - 10;
+    newY = parseFloat(d3.select(this).attr('cy')) - 10;
+
+    // Generate the HTML content for the tooltip
+    let html = "<div> Factor: " + d.axis + "<br><br>";
+
+    for (var k = 0; k < countryValues.length; k++) {
+        html += countryValues[k].countryName + ": " + countryValues[k].factorValue + "<br>";
+    }
+
+    html += "</div>";
+
+    // Set the HTML content and position of the tooltip
+    tooltip.style("display", "block")
+        .style('left', `${event.x + 50}px`)
+        .style('top', `${event.y - 20}px`)
+        .style('font-size', '14px')
+        .html(html);
+})
+.on("mouseout", function() {
+    tooltip.style("display", "none")
+                    .html("");
+});
+
 
     /////////////////////////////////////////////////////////
     /////////////////// Helper Functions ////////////////////
@@ -337,7 +378,7 @@ var legendLabels = gdpData.map(function (d) {
 
     // Add a text label for "GDP scale" above the circles
     legend.append("text")
-    .attr("x", -50) // Adjust the position as needed
+    .attr("x", -35) // Adjust the position as needed
     .attr("y", -30) // Adjust the position as needed
     .style("font-size", "11px")
     .text("GDP per capita");
