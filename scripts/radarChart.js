@@ -344,7 +344,7 @@ svg.append("g")
     // Create a bubble legend using the GDP data
     var legend = svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(" + (margin.left+cfg.w) + "," + (margin.top+cfg.h) + ")");
+        .attr("transform", "translate(" + (margin.left+cfg.w+20) + "," + (margin.top+cfg.h) + ")");
 
     // Calculate the maximum GDP value for scaling the bubble size
     var maxGDP = d3.max(gdpData, function(d) { return d[4].value; });
@@ -352,23 +352,56 @@ svg.append("g")
         .domain([0, maxGDP])
         .range([0, 20]);
 
-    // Add circles and country names to the legend
-    var legendItems = legend.selectAll(".legend-item")
-        .data(gdpData)
-        .enter().append("g")
-        .attr("class", "legend-item")
-        .attr("transform", function(d, i) {
-            return "translate(0," + (i * 25) + ")";
-        });
+    // Add a text label for "GDP scale" above the circles
+    legend.append("text")
+    .attr("x", -50) // Adjust the position as needed
+    .attr("y", -30) // Adjust the position as needed
+    .style("font-size", "15px")
+    .text("GDP per capita");
 
-    legendItems.append("circle")
-        .attr("r", function(d) { return radiusScale(d[4].value); })
-        .style("fill", function(d, i) { return cfg.color(i); });
+    // Add circles, GDP values, and country names to the legend
+    var legendItems = legend.selectAll(".legend-item")
+    .data(gdpData)
+    .enter().append("g")
+    .attr("class", "legend-item")
+    .attr("transform", function(d, i) {
+        return "translate(0," + (i * 25) + ")";
+    });
 
     legendItems.append("text")
-        .attr("x", 30)
-        .attr("y", 5)
-        .text(function(d) { return d[4].country; });
+    .attr("x", 30) // Adjust the position as needed
+    .attr("y", 5)
+    .text(function(d) { return parseFloat(d[4].value).toFixed(0); }); // Display GDP per capita value
 
+    legendItems.append("text")
+    .attr("x", -85) // Adjust the position as needed
+    .attr("y", 5)
+    .text(function(d) { return d[4].country; }); // Display country name
+
+    legendItems.append("circle")
+    .attr("r", function(d) { return radiusScale(d[4].value); })
+    .style("fill", function(d, i) { return cfg.color(i); })
+    .attr("class", "gdpLegendCircle") // Add a class for GDP legend circles
+    .on('mouseover', function(d, i) {
+        // Dim all radar chart areas
+        d3.selectAll(".radarArea")
+            .transition()
+            .duration(200)
+            .style("fill-opacity", 0);
+
+        // Bring back the hovered over radar chart area
+        var radarAreaClass = "." + data[i][0][areaName].replace(/\s+/g, '');
+        d3.select(radarAreaClass)
+            .transition()
+            .duration(200)
+            .style("fill-opacity", 0.7);
+    })
+    .on('mouseout', function() {
+        // Bring back all radar chart areas
+        d3.selectAll(".radarArea")
+            .transition()
+            .duration(200)
+            .style("fill-opacity", cfg.opacityArea);
+    });
 
 }//RadarChart
