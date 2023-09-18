@@ -281,7 +281,7 @@ blobCircleWrapper.selectAll(".radarInvisibleCircle")
     let html = "<div> Factor: " + d.axis + "<br><br>";
 
     for (var k = 0; k < countryValues.length; k++) {
-        html += countryValues[k].countryName + ": " + countryValues[k].factorValue + "<br>";
+        html += countryValues[k].countryName + ": " + parseFloat(countryValues[k].factorValue).toFixed(1) + "%<br>";
     }
 
     html += "</div>";
