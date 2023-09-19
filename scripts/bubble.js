@@ -184,7 +184,8 @@ function drawBubble(id, dataset, wave) {
                 .attr("cy", d => y(d.people_fully_vaccinated_per_hundred))
                 .attr("r", d => z(d.gdp_per_capita))
                 .style("fill", function (d) {
-                    return myColor(d.location)
+                    greyOut()
+                    return "lightgrey"
                 })
                 .style("opacity", 1)
                 .attr("stroke", "none")

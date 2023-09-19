@@ -48,6 +48,10 @@
                         <h1 class="mb-12">Which strategy won against a pandemic crisis in the European Union?</h1>
                         <br>
                         <h6>Taking good decisions in a pandemic crisis can make the difference.</h6>
+                        <ul style="display: inline-block; text-align: start">
+                            <li>Benvenuti Elia</li>
+                            <li>Drago Alessandro</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -331,7 +335,7 @@
                                                 </ul><br>
                                             </div>
                                             <div class="col-lg-12">
-                                                <h5>Which are the top five countries of the 1st wave?</h5>
+                                                <h5>Which are the top five countries of the 2nd wave?</h5>
                                                 <p>
                                                     For sure <u>Finland</u>, <u>Denmark</u>, <u>Ireland</u> and <u>Netherlands</u> has the best results for that 2nd wave. <br>
                                                     Then we have to decide between Belgium* and Greece* that are the last in both of the lists. <br>
@@ -528,6 +532,13 @@
                             </label>
                         </div>
                         <div id="barplot2" class="hidden-left mb-3 graph"></div>
+                        <div class="col-lg-12">
+                            <h5>What are these factors?</h5>
+                            <p class="lead mb-1">
+                                "<b>People fully vaccinated per hundred</b>" and "<b>People vaccinated per hundred</b>" are two important metrics used to measure the progress of COVID-19 vaccination campaigns in a population.<br>
+                                These metrics are expressed as percentages and are used to understand the percentage of a country or region's population that has received at least one dose of a COVID-19 vaccine and the percentage that has received both doses or a complete vaccination series.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -554,6 +565,15 @@
                             </label>
                         </div><br>
                         <div id="bubble" class="hidden-left mb-3 graph"></div>
+                        <div class="col-lg-12">
+                            <h5>How different countries dealt with vaccines?</h5>
+                            <p class="lead mb-1">
+                                During the second wave, it's evident that at least 50% of the population has been vaccinated.
+                                <br>However, it's important to note that not all countries have successfully administered full vaccine doses to their entire populations.<br>
+                                Generally, the countries with the highest GDP are those that vaccinate the most, but there are also some outliers present.<br>
+                                After the third wave, it's interesting to note that all countries have the same trend.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -572,6 +592,14 @@
                         <div class="iframe-container">
                             <iframe id="d3v6frame" src="a.html" style="overflow: hidden;"></iframe>
                         </div><br>
+                        <div class="col-lg-12">
+                            <h5>Let's see all the factors in play</h5>
+                            <p class="lead mb-1">
+                                Before the arrival of vaccines, the countries that reacted best were those that took the
+                                most stringent measures. Here the best GDP countries are not present.<br>
+                                In the second and third waves, however, those countries with higher GDP and those that have also vaccinated more such as Portugal are present.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -611,7 +639,10 @@
                                 <option value="average_containment_index">Average containment index</option>
                             </select>
                         </div><br><br>
-                        <div id="mapFinal"></div>
+                        <div class="row">
+                            <div id="mapFinal"></div>
+                            <div id="legend_map1"></div>
+                        </div>
                     </div>
                 </div>
             </div>

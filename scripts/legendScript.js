@@ -8,18 +8,19 @@ function Legend(color, id, {
     marginBottom = 20 + tickSize,
     marginLeft = 50,
     ticks = width / 6,
-    tickFormat,
-    tickValues
+    tickFormat = d=>`${d}%`,
+    tickValues = [0, 20, 40, 60, 80, 100]
 } = {}) {
     function ramp(color, n = 256) {
         const canvas = document.createElement("canvas");
         canvas.width = n;
         canvas.height = 1;
         const context = canvas.getContext("2d");
-        for (let i = 0; i < n; ++i) {
-            context.fillStyle = color(i / (n - 1));
+        const colors = d3.range(0, 1, 1 / n).map(i => color(i));
+        colors.forEach((c, i) => {
+            context.fillStyle = c;
             context.fillRect(i, 0, 1, 1);
-        }
+        });
         return canvas;
     }
 
