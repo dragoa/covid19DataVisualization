@@ -16,13 +16,13 @@ function drawBubble(id, dataset, wave) {
 
         const dataGroup = d3.group(data, d => d.location);
         // console.log(dataGroup)
-        // Years array
         let countries = [];
 
         for (let i = 0; i < dataGroup.size; i++) {
             countries[i] = Array.from(dataGroup)[i][0]
         }
 
+        // greyOut called when hovering
         const greyOut = function () {
             // Grey out the rest
             svg5.selectAll(".bubble")
@@ -42,6 +42,7 @@ function drawBubble(id, dataset, wave) {
                 .style("opacity", 0.5);
         }
 
+        // called on onMouseLeave
         const doNotHighlight = function () {
             for (let i = 0; i < dataGroup.size; i++) {
                 svg5.select("." + countries[i])
@@ -366,7 +367,7 @@ function drawBubble(id, dataset, wave) {
 
 drawBubble("#bubble", "../assets/data/bubblechart/gdp_vaccination_data.csv", "2nd")
 
-function handlePaymentChange5(event) {
+function handleBubble(event) {
     const wave = event.target.id
 
     if(wave === "flexRadio9")

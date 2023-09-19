@@ -1,5 +1,7 @@
 function drawMap2(id, dataset, colorMap, wave, selectedOptionValue){
 
+    d3.select(id).selectAll("svg").remove();
+
     const map = new Map();
     colorMap = d3.scaleLinear()
         .domain([0, 20, 40, 60, 80])
@@ -9,11 +11,11 @@ function drawMap2(id, dataset, colorMap, wave, selectedOptionValue){
     Promise.all([
         d3.json("/assets/data/map/custom.geo.json"),
         d3.csv(dataset, function (d) {
-            // console.log(d);
             map.set(d.location, +d[selectedOptionValue])
         })
     ]).then(function (loadData) {
 
+        // set the dimensions and margins of the graph
         const margin = {top: 10, right: 100, bottom: 10, left: 100},
             width = 1200 - margin.left - margin.right,
             height = 900 - margin.top - margin.bottom;
@@ -90,7 +92,7 @@ function drawMap2(id, dataset, colorMap, wave, selectedOptionValue){
                     .style("opacity", "1")
                     .style("stroke", "black")
 
-                const percValue = map.get(d.properties.name).toPrecision(4);
+                const percValue = Math.round(map.get(d.properties.name));
                 let tooltipText;
                 // console.log(percValue)
                 if (percValue !== 0 && percValue) {

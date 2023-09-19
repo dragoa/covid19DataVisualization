@@ -741,6 +741,9 @@ progress {
     margin-right: 200px;
 }
 
+#Conclusion1 .btn{
+    margin-top: -10px;
+}
 
 .col {
     flex: 1 0 0%;
