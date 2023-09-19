@@ -11,7 +11,6 @@ function Legend(color, id, {
     tickFormat,
     tickValues
 } = {}) {
-
     function ramp(color, n = 256) {
         const canvas = document.createElement("canvas");
         canvas.width = n;
@@ -37,7 +36,7 @@ function Legend(color, id, {
     let tickAdjust = g => g.selectAll(".tick line").attr("y1", marginTop + marginBottom - height);
     let x;
 
-// Continuous
+    // Continuous
     if (color.interpolate) {
         const n = Math.min(color.domain().length, color.range().length);
 
@@ -50,21 +49,7 @@ function Legend(color, id, {
             .attr("height", height - marginTop - marginBottom)
             .attr("preserveAspectRatio", "none")
             .attr("xlink:href", ramp(color.copy().domain(d3.quantize(d3.interpolate(0, 1), n))).toDataURL());
-    }
-
-// Sequential
-    else if (color.interpolator) {
-        x = Object.assign(color.copy()
-                .interpolator(d3.interpolateRound(marginLeft, width - marginRight)),
-            {range() { return [marginLeft, width - marginRight]; }});
-
-        svg5.append("image")
-            .attr("x", marginLeft)
-            .attr("y", marginTop)
-            .attr("width", width - marginLeft - marginRight)
-            .attr("height", height - marginTop - marginBottom)
-            .attr("preserveAspectRatio", "none")
-            .attr("xlink:href", ramp(color.interpolator()).toDataURL());
+        
 
         // scaleSequentialQuantile doesn’t implement ticks or tickFormat.
         if (!x.ticks) {

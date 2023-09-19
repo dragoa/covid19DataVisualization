@@ -1,9 +1,12 @@
 function drawMap(id, dataset, colorMap, wave){
 
     const map = new Map();
+    // Assuming your color scale's domain is from 0 to 100 (representing percentages)
+    // Divide the domain into 5 equal parts (0-20%, 20-40%, 40-60%, 60-80%, 80-100%)
+    const domainValues = [0, 20, 40, 60, 80, 100];
     colorMap = d3.scaleLinear()
-        .domain([0, 20, 40, 60, 80])
-        .range(['lightgrey', '#FFB17A', "#F1FEC6", '#037971', '#023436']);
+    .domain(domainValues)
+    .range(['lightgrey', '#FFB17A', '#F1FEC6', '#037971', '#023436','black']);
 
     // load both geometric and aggregated data
     Promise.all([
@@ -54,9 +57,8 @@ function drawMap(id, dataset, colorMap, wave){
             .scale([width / 1.3])
             .translate([width / 2, height / 2])
 
-        console.log(d3.schemeGreens[6])
         const color = colorMap
-        Legend(d3.scaleThreshold([0, 20, 40, 60, 80], ['lightgrey', '#FFB17A', "#F1FEC6", '#037971', '#023436']), "#legend_map")
+        Legend(colorMap, "#legend_map")
 
         let topo = loadData[0]
         // projection.fitSize([width, height], topo);
