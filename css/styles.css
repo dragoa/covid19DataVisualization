@@ -107,6 +107,137 @@ body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.cool-hr {
+    height: 15px; /* Set the height to control thickness */
+    background-image: linear-gradient(90deg, #037971, #023436, #037971);
+    background-size: 200% 100%; /* Adjust the background size for thickness */
+    animation: coolHrAnimation 3s linear infinite;
+    margin-top: 60px;
+}
+
+/* Define a keyframe animation for the cool effect */
+@keyframes coolHrAnimation {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Define a container for the cool-h3 */
+.cool-h3-container {
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Define a cool-h3 class for styling the h3 element */
+.cool-h3 {
+    font-size: 24px; /* Adjust the font size as needed */
+    display: inline-block;
+    padding: 10px 20px;
+    background-image: linear-gradient(90deg, #037971, #023436);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Fira Sans', sans-serif; /* Specify the font family */
+    font-weight: bold;
+    border-radius: 50px; /* Add border-radius for the bubble effect */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Add box-shadow for the cool effect */
+}
+
+.cool-paragraph {
+    font-size: 16px; /* Adjust the font size as needed */
+    padding: 20px;
+    background: rgba(3, 121, 113, 0.2); /* Background color with alpha for transparency */
+    border-radius: 10px; /* Add border-radius for a rounded look */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Add box-shadow for the cool effect */
+    margin-bottom: 20px; /* Adjust margin as needed */
+    font-family: 'Fira Sans', sans-serif; /* Specify the font family */
+}
+
+/* Define a cool-gradient-shadow class for a cooler hover effect on gradient shadows */
+.cool-gradient-shadow {
+    background: linear-gradient(90deg, #037971, #023436); /* Gradient background */
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-family: 'Fira Sans', sans-serif;
+    transition: transform 0.2s ease, box-shadow 0.3s ease; /* Transition for transform and box-shadow */
+}
+
+/* Define hover behavior for .cool-gradient-shadow */
+.cool-gradient-shadow:hover {
+    transform: scale(1.02); /* Slight scale-up on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow effect on hover */
+}
+
+/* Define a cool-text-highlight class for a cooler hover effect on text highlights */
+.cool-text-highlight {
+    background-color: transparent; /* Transparent background */
+    color: #023436; /* Text color */
+    border: 2px solid #037971; /* Border color */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-family: 'Fira Sans', sans-serif;
+    transition: transform 0.2s ease, border-color 0.3s ease; /* Transition for transform and border-color */
+}
+
+/* Define hover behavior for .cool-text-highlight */
+.cool-text-highlight:hover {
+    transform: scale(1.02); /* Slight scale-up on hover */
+}
+
+.cool-paragraph-hover-light {
+    background-color: #D5E6E6; /* Initial background color (lighter) */
+    color: #023436; /* Text color */
+    padding: 15px;
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom: 20px;
+    font-family: 'Fira Sans', sans-serif;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Transition for transform, box-shadow, and background-color */
+}
+
+/* Define hover behavior */
+.cool-paragraph-hover-light:hover {
+    background-color: #D5E6E6; /* New background color on hover (lighter) */
+    transform: scale(1.02); /* Slight scale-up on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow effect on hover */
+}
+
+/* Define a cool-h4 class for styling the h4 element */
+.cool-h4 {
+    font-size: 20px; /* Adjust the font size as needed */
+    display: inline-block;
+    padding: 5px 15px; /* Adjust padding for the bubble effect */
+    background-color: #037971; /* Background color */
+    color: #fff; /* Text color */
+    font-family: 'Fira Sans', sans-serif; /* Specify the font family */
+    font-weight: bold;
+    border-radius: 50px; /* Add border-radius for the bubble effect */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: transform 0.2s ease; /* Transition for transform */
+    text-align: center;
+    line-height: 1.4; /* Adjust line-height for vertical centering */
+    margin-bottom: 20px;
+}
+
+/* Apply the bubble animation on hover */
+.cool-h4:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+
+
+
+
+
 /* CSS for fade-in animation */
 .fade-in {
     opacity: 0;
