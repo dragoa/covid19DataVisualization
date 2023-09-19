@@ -1,10 +1,3 @@
-/////////////////////////////////////////////////////////
-/////////////// The Radar Chart Function ////////////////
-/////////////// Written by Nadieh Bremer ////////////////
-////////////////// VisualCinnamon.com ///////////////////
-/////////// Inspired by the code of alangrafu ///////////
-/////////////////////////////////////////////////////////
-
 function RadarChart(id, data, gdpData, options) {
     const colors = ["#dbdb8d", "#17becf", "#9edae5", "#5254a3", "#6b6ecf", "#9c9ede" ,"#f7b6d2", "#bcbd22", "#e377c2", "#393b79","#e7ba52", "#1f77b4", "#637939", "#8ca252","#2ca02c", "#b5cf6b", "#8c6d31", "#bd9e39", "#aec7e8", "#ff7f0e", "#ffbb78", "#98df8a",  "#ff9896", "#9467bd", "#c5b0d5","#d62728", "#8c564b", "#c49c94", "#7f7f7f"];
     const colorScale = d3.scale.ordinal().range(colors);
@@ -60,10 +53,6 @@ function RadarChart(id, data, gdpData, options) {
         .range([0, radius])
         .domain([0, maxValue]);
 
-    /////////////////////////////////////////////////////////
-    //////////// Create the container SVG and g /////////////
-    /////////////////////////////////////////////////////////
-
     //Remove whatever chart with the same id/class was present before
     d3.select(id).select("svg").remove();
 
@@ -82,10 +71,6 @@ function RadarChart(id, data, gdpData, options) {
         .attr("class", "tooltip1 fade-in")
         .style("display", "none");
 
-    /////////////////////////////////////////////////////////
-    ////////// Glow filter for some extra pizzazz ///////////
-    /////////////////////////////////////////////////////////
-
     //Filter for the outside glow
     var filter = g.append('defs').append('filter').attr('id','glow'),
         feGaussianBlur = filter.append('feGaussianBlur').attr('stdDeviation','2.5').attr('result','coloredBlur'),
@@ -93,10 +78,7 @@ function RadarChart(id, data, gdpData, options) {
         feMergeNode_1 = feMerge.append('feMergeNode').attr('in','coloredBlur'),
         feMergeNode_2 = feMerge.append('feMergeNode').attr('in','SourceGraphic');
 
-    /////////////////////////////////////////////////////////
-    /////////////// Draw the Circular grid //////////////////
-    /////////////////////////////////////////////////////////
-
+    // Draw the Circular grid
     //Wrapper for the grid & axes
     var axisGrid = g.append("g").attr("class", "axisWrapper");
 
@@ -124,9 +106,7 @@ function RadarChart(id, data, gdpData, options) {
         .attr("fill", "#737373")
         .text(function(d,i) { return Format(maxValue * d/cfg.levels); });
 
-    /////////////////////////////////////////////////////////
-    //////////////////// Draw the axes //////////////////////
-    /////////////////////////////////////////////////////////
+    // Draw the axes
 
     //Create the straight lines radiating outward from the center
     var axis = axisGrid.selectAll(".axis")
@@ -154,10 +134,6 @@ function RadarChart(id, data, gdpData, options) {
         .attr("y", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.sin(angleSlice*i - Math.PI/2); })
         .text(function(d){return d})
         .call(wrap, cfg.wrapWidth);
-
-    /////////////////////////////////////////////////////////
-    ///////////// Draw the radar chart blobs ////////////////
-    /////////////////////////////////////////////////////////
 
     // Draw the radar chart blobs
     var radarLine = d3.svg.line.radial()
@@ -221,10 +197,7 @@ function RadarChart(id, data, gdpData, options) {
         .style("fill", function(d,i,j) { return cfg.color(j); })
         .style("fill-opacity", 0.8);
 
-    /////////////////////////////////////////////////////////
-    //////// Append invisible circles for tooltip ///////////
-    /////////////////////////////////////////////////////////
-
+    // Append invisible circles for tooltip
     //Wrapper for the invisible circles on top
     var blobCircleWrapper = g.selectAll(".radarCircleWrapper")
         .data(data)
@@ -299,10 +272,6 @@ blobCircleWrapper.selectAll(".radarInvisibleCircle")
 });
 
 
-    /////////////////////////////////////////////////////////
-    /////////////////// Helper Functions ////////////////////
-    /////////////////////////////////////////////////////////
-
     //Taken from http://bl.ocks.org/mbostock/7555321
     //Wraps SVG text
     function wrap(text, width) {
@@ -351,11 +320,6 @@ blobCircleWrapper.selectAll(".radarInvisibleCircle")
             .style("fill-opacity", cfg.opacityArea);
     }
 
-    /////////////////////////////////////////////////////////
-    /////////////////// Draw the Legend /////////////////////
-    /////////////////////////////////////////////////////////
-
-    // Sort the gdpData array based on GDP per capita values in descending order
     // Sort the gdpData array based on GDP per capita values in descending order
 gdpData.sort(function (a, b) {
     return b[4].value - a[4].value;
