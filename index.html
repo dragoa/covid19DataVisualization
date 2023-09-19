@@ -78,7 +78,7 @@
                         <a style="color:white" class="link" href="https://ec.europa.eu/eurostat/web/covid-19/data" target="_blank"> Eurostat Covid-19 </a>
                     </p>
                     <br><br>
-                    <div style="text-align: center;">
+                    <div class="bg-light" style="text-align: center;">
                         <img src="/assets/img/Europe-mask.jpeg">
                     </div>
                 </div>
@@ -146,7 +146,7 @@
 
         <div class="container">
             <div class="row justify-content-md-center">
-                <div class="col-lg-11">
+                <div class="col-lg-11">                    
                     <h5 style="text-align:center !important;">Aspects to consider</h5>
                     <p class="cool-text-highlight lead mb-0">We will consider these aspects to have a valid decision on which countries to consider best.<br><br>
 
@@ -177,13 +177,15 @@
             </div>
         </div>
     </section>
-
+    <div class="bg-light" style="text-align: center;">
+        <img style="max-width:700px; margin-top: 40px;margin-left: 40px; background-color: ;" src="/assets/img/Stats_World.jpeg">
+    </div>
     <!-- Linechart First Wave -->
     <div id="first_wave" class="fade-in">
         <section class="features-icons bg-light text-center">
             <div class="container">
                 <div class="row justify-content-md-center">
-                    <div class="col-lg-11">
+                    <div class="col-lg-11" style="text-align: center;">
                         <h3 class="cool-h4 col-lg-11" style="padding:2px">First Wave: When the covid arrived</h3>
                     </div>
                         
@@ -273,7 +275,7 @@
         <section class="features-icons bg-light text-center">
             <div class="container">
                 <div class="row justify-content-md-center">
-                    <div class="col-lg-11">
+                    <div class="col-lg-11" style="text-align: center;">
                         <h3 class="cool-h4 col-lg-11" style="padding:2px">Second Wave: When vaccines arrived</h3>
                         <p>Now we will see if the sames countries will be in our top 5 or not...</p>
                     </div>
@@ -359,7 +361,7 @@
         <section class="features-icons bg-light text-center">
             <div class="container">
                 <div class="row justify-content-md-center">
-                    <div class="col-lg-11">
+                    <div class="col-lg-11" style="text-align: center;">
                         <h3 class="cool-h4 col-lg-11" style="padding:2px">Third Wave: When countries were adapted</h3>
                     </div>
                     <div class="col-lg-12">
@@ -448,10 +450,12 @@
                     <div class="cool-h3-container">
                         <h3 class="cool-h3" style="text-align:center">Analysis: Which factors are used by the top 5 countries?</h3>
                     </div>
-                    
+                    <img  style="max-width: 700px;" src="/assets/img/world-mask.jpeg">
                     <div class="col-lg-11">
                         <br>
-                        <h4>Stringency and containment index</h4>
+                        <div  style="text-align: center;">
+                            <h3 class="cool-h4 col-lg-11" style="padding:2px">Stringency and containment index</h3>
+                        </div>
                         <p class="cool-paragraph lead mb-1">The Oxford Coronavirus Government Response Tracker (OxCGRT) project calculate a Stringency Index, a composite measure of nine of the response metrics.
                             In July 2022 the OxCGRT implemented data changes which incorporate different policies applying to vaccinated and non-vaccinated people. <br>
                             </p>
@@ -476,7 +480,7 @@
                                     </ul>
                                 </div>
                             </div><br>
-                            <p class="lead mb-1">
+                            <p class="cool-text-highlight lead mb-1">
                                 Containement index includes a 'COVID-19 Containment and Health Response' index which is based on the metrics used in the 'Stringency Index'
                                 plus testing policy, contact tracing, face coverings and vaccine policy.
                             </p>
@@ -518,10 +522,16 @@
             <div class="container">
                 <div class="row justify-content-md-center">
                     <div class="col-lg-11">
-                        <h3>Vaccines: How much?</h3>
+                        <div  style="text-align: center;">
+                            <h3 class="cool-h4 col-lg-11" style="padding:2px">Vaccines: change of strategy?</h3>
+                        </div>
+                        
                         <p class="cool-paragraph lead mb-1">Let's see the impact of the vaccines for the best countries for each wave. Vaccines arrived during
                             the second wave for this reason we can see only two options. 
                         </p>
+                        <div style="text-align: center; margin-top:20px">
+                            <img style="max-width: 600px;" src="/assets/img/Vaccines.jpeg">
+                        </div>
                         <div class="form-check2">
                             <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadio4" onchange="handleBarplot(event)" checked>
                             <label class="form-check-label" for="flexRadio4">
@@ -553,7 +563,10 @@
             <div class="container">
                 <div class="row justify-content-md-center">
                     <div class="col-lg-11">
-                        <h4>Vaccines and GDP</h4>
+                        <div  style="text-align: center;">
+                            <h3 class="cool-h4 col-lg-11" style="padding:2px">GDP per capita changes the strategy?</h3>
+                        </div>
+                        <h4></h4>
                         <p>Let's see how much the countries decided to invest in vaccines based on their GDP.</p>
                         <div class="form-check4">
                             <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio9" onchange="handleBubble(event)" checked>
@@ -645,6 +658,9 @@
                         <div class="row">
                             <div id="mapFinal"></div>
                             <div id="legend_map1"></div>
+                        </div>
+                        <div class="col-lg-11 bg-light" style="text-align: center;">
+                            <img src="/assets/img/QuestionMark.jpeg">
                         </div>
                     </div>
                 </div>
