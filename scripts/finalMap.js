@@ -1,11 +1,11 @@
-function drawMap2(id, dataset, colorMap, wave, selectedOptionValue){
+function drawMap2(id, dataset, wave, selectedOptionValue){
 
     d3.select(id).selectAll("svg").remove();
 
     const map = new Map();
-    colorMap = d3.scaleLinear()
-        .domain([0, 20, 40, 60, 80])
-        .range(['lightgrey', '#FFB17A', "#F1FEC6", '#037971', '#023436']);
+    let colorMap = d3.scaleLinear()
+        .domain([0, 20, 40, 60, 80, 100])
+        .range(['lightgrey', '#FFB17A', "#F1FEC6", '#037971', '#023436', 'black']);
 
     // load both geometric and aggregated data
     Promise.all([
@@ -48,7 +48,7 @@ function drawMap2(id, dataset, colorMap, wave, selectedOptionValue){
 
         console.log(d3.schemeGreens[6])
         const color = colorMap
-        Legend(d3.scaleThreshold([0, 20, 40, 60, 80], ['lightgrey', '#FFB17A', "#F1FEC6", '#037971', '#023436']), "#legend_map")
+        Legend(colorMap, "#legend_map1")
 
         let topo = loadData[0]
         // projection.fitSize([width, height], topo);
@@ -118,7 +118,7 @@ function drawMap2(id, dataset, colorMap, wave, selectedOptionValue){
     })
 }
 
-drawMap2("#mapFinal", "assets/data/finalMap/FinalMap1.csv", d => d3.interpolateGreens(d/100), "1st", "gdp_per_capita")
+drawMap2("#mapFinal", "assets/data/finalMap/FinalMap1.csv", "1st", "gdp_per_capita")
 
 function handlePaymentChange6(event) {
     // Get the value of the selected radio button
@@ -136,20 +136,20 @@ function handlePaymentChange6(event) {
     const selectElement = document.getElementById("map2");
     const selectedOptionValue = selectElement.value;
 
-    console.log(selectedRadioButtonValue)
-    console.log(selectedOptionValue)
+    //console.log(selectedRadioButtonValue)
+    //console.log(selectedOptionValue)
 
 
     if(selectedRadioButtonValue === "flexRadio11"){ // 1st wave
-        drawMap2("#mapFinal", "assets/data/finalMap/FinalMap1.csv", d => d3.interpolateGreens(d/100), "1st", selectedOptionValue)
+        drawMap2("#mapFinal", "assets/data/finalMap/FinalMap1.csv",  "1st", selectedOptionValue)
     }
     else if(selectedRadioButtonValue === "flexRadio12"){
-        drawMap2("#mapFinal", "assets/data/finalMap/FinalMap2.csv", d => d3.interpolateGreens(d / 100), "2nd", selectedOptionValue)
+        drawMap2("#mapFinal", "assets/data/finalMap/FinalMap2.csv", "2nd", selectedOptionValue)
     }
     else if(selectedRadioButtonValue === "flexRadio13"){
-        drawMap2("#mapFinal", "assets/data/finalMap/FinalMap3.csv", d => d3.interpolateGreens(d / 100), "3rd", selectedOptionValue)
+        drawMap2("#mapFinal", "assets/data/finalMap/FinalMap3.csv", "3rd", selectedOptionValue)
     }
     else{
-        drawMap2("#mapFinal", "assets/data/finalMap/FinalMap1.csv", d => d3.interpolateGreens(d / 100), "1st", selectedOptionValue)
+        drawMap2("#mapFinal", "assets/data/finalMap/FinalMap1.csv",  "1st", selectedOptionValue)
     }
 }

@@ -1,10 +1,10 @@
-function drawMap(id, dataset, colorMap, wave){
+function drawMap(id, dataset, wave){
 
     const map = new Map();
     // Assuming your color scale's domain is from 0 to 100 (representing percentages)
     // Divide the domain into 5 equal parts (0-20%, 20-40%, 40-60%, 60-80%, 80-100%)
     const domainValues = [0, 20, 40, 60, 80, 100];
-    colorMap = d3.scaleLinear()
+    let colorMap = d3.scaleLinear()
     .domain(domainValues)
     .range(['lightgrey', '#FFB17A', '#F1FEC6', '#037971', '#023436','black']);
 
@@ -128,25 +128,25 @@ function drawMap(id, dataset, colorMap, wave){
     })
 }
 
-drawMap("#map1", "assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d/100), "1st")
+drawMap("#map1", "assets/data/map/map_tot_stringency1.csv", "1st")
 
 function handlePaymentChange2(event) {
     const wave = event.target.id
 
     if(wave === "flexRadio1"){
         drawStackedBar("#barplot1", "/assets/data/barplot/average_1.csv", "1st")
-        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d/100), "1st")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv",  "1st")
     }
     else if(wave === "flexRadio2"){
         drawStackedBar("#barplot1", "/assets/data/barplot/average_2.csv", "2nd")
-        drawMap("#map1", "/assets/data/map/map_tot_stringency2.csv", d => d3.interpolateGreens(d / 100), "2nd")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency2.csv", "2nd")
     }
     else if(wave === "flexRadio3"){
         drawStackedBar("#barplot1", "/assets/data/barplot/average_3.csv", "3rd")
-        drawMap("#map1", "/assets/data/map/map_tot_stringency3.csv", d => d3.interpolateGreens(d / 100), "3rd")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency3.csv", "3rd")
     }
     else{
         drawStackedBar("#barplot1", "/assets/data/barplot/average_1.csv", "1st")
-        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", d => d3.interpolateGreens(d / 100), "1st")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", "1st")
     }
 }
