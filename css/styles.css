@@ -876,6 +876,11 @@ progress {
     margin-top: -10px;
 }
 
+#Conclusion1 .imageContainer{
+    text-align: center;
+    padding-left: 20px;
+}
+
 .col {
     flex: 1 0 0%;
 }

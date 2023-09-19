@@ -1,4 +1,4 @@
-function RadarChart(id, data, gdpData, options) {
+function RadarChart(id, data, gdpData, options, wave) {
     const colors = ["#dbdb8d", "#17becf", "#9edae5", "#5254a3", "#6b6ecf", "#9c9ede" ,"#f7b6d2", "#bcbd22", "#e377c2", "#393b79","#e7ba52", "#1f77b4", "#637939", "#8ca252","#2ca02c", "#b5cf6b", "#8c6d31", "#bd9e39", "#aec7e8", "#ff7f0e", "#ffbb78", "#98df8a",  "#ff9896", "#9467bd", "#c5b0d5","#d62728", "#8c564b", "#c49c94", "#7f7f7f"];
     const colorScale = d3.scale.ordinal().range(colors);
     var cfg = {
@@ -64,6 +64,18 @@ function RadarChart(id, data, gdpData, options) {
     //Append a g element
     var g = svg.append("g")
         .attr("transform", "translate(" + (cfg.w/2 + cfg.margin.left) + "," + (cfg.h/2 + cfg.margin.top) + ")");
+
+    // Add X axis label
+    svg.append("text")
+        .attr("class", "axis-label")
+        .attr("text-anchor", "middle")
+        .style("font-size", "11px")
+        .attr("x", width/2 + 180)
+        .attr("y", margin.bottom)
+        .text(`${wave} wave RADAR CHART: All factors in play`)
+        .style("transform", "translate(0, -330px)")
+        .style("font-weight", "bold")
+        .style("font-family", "Fira Sans");
 
     //Set up the small tooltip for when you hover over a circle
     const tooltip = d3.select(id)

@@ -94,28 +94,33 @@
     
     function handlePaymentChange4(event) {
         const wave = event.target.id
+        let waveId
 
         if(wave === "flexRadio6"){
             datasets = "./assets/data/radar/radar1.json"
             gdpData = "./assets/data/radar/radar1_gdp.json"
+            waveId = "1st"
         }
         else if(wave === "flexRadio7"){
             datasets = "./assets/data/radar/radar2.json"
             gdpData = "./assets/data/radar/radar2_gdp.json"
+            waveId = "2nd"
         }
         else if(wave === "flexRadio8"){
             datasets = "./assets/data/radar/radar3.json"
             gdpData = "./assets/data/radar/radar3_gdp.json"
+            waveId = "3rd"
         }
         else{
             datasets = "./assets/data/radar/radar1.json"
             gdpData = "./assets/data/radar/radar1_gdp.json"
+            waveId = "1st"
         }
 
         // Load the data and call the function to draw the Radar chart
         d3.json(datasets, function (error, data) {
             d3.json(gdpData, function (error, data2) {
-                RadarChart(".radarChart", data, data2, radarChartOptions);
+                RadarChart(".radarChart", data, data2, radarChartOptions, waveId);
             });
         });
     }
@@ -123,7 +128,7 @@
     // Initial load with default datasets and GDP data
     d3.json(datasets, function (error, data) {
         d3.json(gdpData, function (error, data2) {
-            RadarChart(".radarChart", data, data2, radarChartOptions);
+            RadarChart(".radarChart", data, data2, radarChartOptions, "1st");
         });
     });
 </script>
