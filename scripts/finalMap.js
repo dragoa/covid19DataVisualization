@@ -1,5 +1,7 @@
 function drawMap2(id, dataset, colorMap, wave, selectedOptionValue){
 
+    d3.select(id).selectAll("svg").remove();
+
     const map = new Map();
     colorMap = d3.scaleLinear()
         .domain([0, 20, 40, 60, 80])
