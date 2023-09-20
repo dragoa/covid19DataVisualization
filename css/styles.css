@@ -233,7 +233,31 @@ body {
     transform: scale(1.05); /* Scale up on hover */
 }
 
+/* Style for h6 element */
+.cool-h6 {
+    font-size: 20px; /* Adjust the font size as needed */
+    font-weight: bold;
+    color: #fff; /* Text color */
+    margin-bottom: 10px; /* Add spacing below the h6 element */
+    background-color: rgba(3, 121, 113, 0.7); /* Semi-transparent background */
+    padding: 5px 10px; /* Add padding to the text */
+}
 
+/* Style for ul element */
+.cool-ul {
+    list-style: none; /* Remove list bullets */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+/* Style for li elements within ul */
+.cool-ul li {
+    font-size: 16px; /* Adjust the font size as needed */
+    color: #fff; /* Text color */
+    margin-bottom: 5px; /* Add spacing between list items */
+    background-color: rgba(3, 121, 113, 0.7); /* Semi-transparent background */
+    padding: 5px 10px; /* Add padding to the text */
+}
 
 
 
@@ -763,6 +787,22 @@ progress {
     content: "— ";
 }
 
+.image-container {
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 700px; /* Set the maximum width to 100% of its container */
+    height: auto; /* Allow the height to adjust proportionally */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .image-container img {
+        max-width: 300px; /* Remove the max-width for smaller screens */
+    }
+}
+
 .img-fluid {
     max-width: 100%;
     height: auto;
@@ -874,11 +914,6 @@ progress {
 
 #Conclusion1 .btn{
     margin-top: -10px;
-}
-
-#Conclusion1 .imageContainer{
-    text-align: center;
-    padding-left: 20px;
 }
 
 .col {

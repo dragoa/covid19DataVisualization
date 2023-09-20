@@ -47,8 +47,8 @@
                         <!-- Page heading-->
                         <h1 class="mb-12">Which strategy won against a pandemic crisis in the European Union?</h1>
                         <br>
-                        <h6>Taking good decisions in a pandemic crisis can make the difference.</h6>
-                        <ul style="display: inline-block; text-align: start">
+                        <h6 class="cool-h6">Taking good decisions in a pandemic crisis can make the difference.</h6>
+                        <ul class="cool-ul" style="display: inline-block; text-align: start">
                             <li>Benvenuti Elia</li>
                             <li>Drago Alessandro</li>
                         </ul>
@@ -78,7 +78,7 @@
                         <a style="color:white" class="link" href="https://ec.europa.eu/eurostat/web/covid-19/data" target="_blank"> Eurostat Covid-19 </a>
                     </p>
                     <br><br>
-                    <div class="bg-light" style="text-align: center;">
+                    <div class="image-container bg-light"">
                         <img src="/assets/img/Europe-mask.jpeg">
                     </div>
                 </div>
@@ -177,8 +177,8 @@
             </div>
         </div>
     </section>
-    <div class="bg-light" style="text-align: center;">
-        <img style="max-width:700px; margin-top: 40px;margin-left: 40px;" src="/assets/img/Stats_World.jpeg">
+    <div  class="image-container bg-light">
+        <img src="/assets/img/Stats_World.jpeg" alt="World Stats Image">
     </div>
     <!-- Linechart First Wave -->
     <div id="first_wave" class="fade-in">
@@ -450,7 +450,9 @@
                     <div class="cool-h3-container">
                         <h3 class="cool-h3" style="text-align:center">Analysis: Which factors are used by the top 5 countries?</h3>
                     </div>
-                    <img  style="max-width: 700px;" src="/assets/img/world-mask.jpeg">
+                    <div class="image-container">
+                        <img src="/assets/img/world-mask.jpeg" alt="World Mask">
+                    </div>
                     <div class="col-lg-11">
                         <br>
                         <div  style="text-align: center;">
@@ -529,8 +531,8 @@
                         <p class="cool-paragraph lead mb-1">Let's see the impact of the vaccines for the best countries for each wave. Vaccines arrived during
                             the second wave for this reason we can see only two options. 
                         </p>
-                        <div style="text-align: center; margin-top:20px">
-                            <img style="max-width: 600px;" src="/assets/img/Vaccines.jpeg">
+                        <div class="image-container bg-light">
+                            <img src="/assets/img/Vaccines.jpeg" alt="Vaccines image">
                         </div>
                         <div class="form-check2">
                             <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadio4" onchange="handleBarplot(event)" checked>
@@ -629,57 +631,66 @@
             <div class="container">
                 <div class="d-flex justify-content-center">
                     <div class="col-lg-10">
-                        <div class="d-flex justify-content-center">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadio11" onchange="handlePaymentChange6(event)" checked>
-                                <label class="form-check-label" for="flexRadio11">
-                                    1st Wave
-                                </label>
+                        <div class="col-lg-12">
+                            <div class="d-flex justify-content-center">
+                                <div class="card">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadio11" onchange="handlePaymentChange6(event)" checked>
+                                        <label class="form-check-label" for="flexRadio11">
+                                            1st Wave
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadio12" onchange="handlePaymentChange6(event)">
+                                        <label class="form-check-label" for="flexRadio12">
+                                            2nd wave
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadio13" onchange="handlePaymentChange6(event)">
+                                        <label class="form-check-label" for="flexRadio13">
+                                            3rd wave
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <label hidden="hidden" for="map2">Select option for new deaths</label>
+                                <select class="btn btn-outline-success shadow-none" autocomplete="off" id="map2" required onchange="handlePaymentChange6(event)">
+                                    <option value="gdp_per_capita" selected>GDP per capita</option>
+                                    <option value="people_vaccinated_per_hundred">People vaccinated per hundred</option>
+                                    <option value="people_fully_vaccinated_per_hundred">People fully vaccinated per hundred</option>
+                                    <option value="average_stringency_index">Average stringency index</option>
+                                    <option value="average_containment_index">Average containment index</option>
+                                </select>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadio12" onchange="handlePaymentChange6(event)">
-                                <label class="form-check-label" for="flexRadio12">
-                                    2nd wave
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadio13" onchange="handlePaymentChange6(event)">
-                                <label class="form-check-label" for="flexRadio13">
-                                    3rd wave
-                                </label>
-                            </div>
-                            <label hidden="hidden" for="map2">Select option for new deaths</label>
-                            <select class="btn btn-outline-success shadow-none" autocomplete="off" id="map2" required onchange="handlePaymentChange6(event)">
-                                <option value="gdp_per_capita" selected>GDP per capita</option>
-                                <option value="people_vaccinated_per_hundred">People vaccinated per hundred</option>
-                                <option value="people_fully_vaccinated_per_hundred">People fully vaccinated per hundred</option>
-                                <option value="average_stringency_index">Average stringency index</option>
-                                <option value="average_containment_index">Average containment index</option>
-                            </select>
                         </div><br><br>
                         <div class="row">
                             <div id="mapFinal"></div>
                             <div id="legend_map1"></div>
                         </div>
-                        <div class="col-lg-12">
-                            <h5>Let's see all the factors in play</h5>
-                            <p class="cool-text-highlight lead mb-1">
-                                We have created a map that displays all the factors we've considered for each country in EU, allowing for an easy comparison.
-                            </p><br>
-                            <div class="imageContainer">
-                                <img src="/assets/img/QuestionMark.jpeg" alt="question_mark_covid">
-                            </div><br>
-                            <div style="text-align: center;">
-                                <h3 class="cool-h4 col-lg-11" style="padding:2px">Final conclusions</h3>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5>Let's see all the factors in play</h5>
+                                <p class="cool-text-highlight lead mb-1">
+                                    We have created a map that displays all the factors we've considered for each country in EU, allowing for an easy comparison.
+                                </p><br>
+                                <div class="image-container bg-light">
+                                    <img src="/assets/img/QuestionMark.jpeg" alt="question_mark_covid">
+                                </div>
+                                <br>
+                                <div style="text-align: center;">
+                                    <h3 class="cool-h4 col-lg-11" style="padding:2px">Final conclusions</h3>
+                                </div>
+                                <p class="cool-gradient-shadow lead mb-0">
+                                    Upon analyzing the data, we observed that strategic factors played a role in shaping the pandemic trends
+                                    in European Union countries. <br>However, even when countries like Italy implemented similar or even more
+                                    stringent measures than the best-performing nations, their outcomes were not necessarily superior. <br>
+                                    This leads us to believe that strategic factors alone may not suffice to achieve optimal results in combating a pandemic.<br>
+                                    Certainly, there are other critical factors that should not be underestimated, such as the average age of the population, the resilience of the healthcare system, and numerous other variables. Exploring these factors in depth could warrant an extensive and comprehensive study.
+                                </p>
                             </div>
-                            <p class="cool-gradient-shadow lead mb-0">
-                                Upon analyzing the data, we observed that strategic factors played a role in shaping the pandemic trends
-                                in European Union countries. <br>However, even when countries like Italy implemented similar or even more
-                                stringent measures than the best-performing nations, their outcomes were not necessarily superior. <br>
-                                This leads us to believe that strategic factors alone may not suffice to achieve optimal results in combating a pandemic.<br>
-                                Certainly, there are other critical factors that should not be underestimated, such as the average age of the population, the resilience of the healthcare system, and numerous other variables. Exploring these factors in depth could warrant an extensive and comprehensive study.
-                            </p>
                         </div>
+                        
                     </div>
                 </div>
             </div>
