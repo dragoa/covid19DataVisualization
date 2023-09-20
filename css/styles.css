@@ -77,6 +77,23 @@
     }
 }
 
+.tooltip1{
+    position: fixed;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    opacity: 1 !important;
+    background-color: white;
+    transform: translate(7%, -7%);
+    padding: 0.4rem !important;
+    z-index: 1 !important;
+    text-align: left;
+    font-size: 10px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: var(--bs-body-font-family) ;
@@ -88,6 +105,176 @@ body {
     background-color: var(--bs-body-bg);
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.cool-hr {
+    height: 15px; /* Set the height to control thickness */
+    background-image: linear-gradient(90deg, #037971, #023436, #037971);
+    background-size: 200% 100%; /* Adjust the background size for thickness */
+    animation: coolHrAnimation 3s linear infinite;
+    margin-top: 60px;
+}
+
+/* Define a keyframe animation for the cool effect */
+@keyframes coolHrAnimation {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Define a container for the cool-h3 */
+.cool-h3-container {
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Define a cool-h3 class for styling the h3 element */
+.cool-h3 {
+    font-size: 24px; /* Adjust the font size as needed */
+    display: inline-block;
+    padding: 10px 20px;
+    background-image: linear-gradient(90deg, #037971, #023436);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Fira Sans', sans-serif; /* Specify the font family */
+    font-weight: bold;
+    border-radius: 50px; /* Add border-radius for the bubble effect */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Add box-shadow for the cool effect */
+}
+
+.cool-paragraph {
+    font-size: 16px; /* Adjust the font size as needed */
+    padding: 20px;
+    background: rgba(3, 121, 113, 0.2); /* Background color with alpha for transparency */
+    border-radius: 10px; /* Add border-radius for a rounded look */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Add box-shadow for the cool effect */
+    margin-bottom: 20px; /* Adjust margin as needed */
+    font-family: 'Fira Sans', sans-serif; /* Specify the font family */
+}
+
+/* Define a cool-gradient-shadow class for a cooler hover effect on gradient shadows */
+.cool-gradient-shadow {
+    background: linear-gradient(90deg, #037971, #023436); /* Gradient background */
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-family: 'Fira Sans', sans-serif;
+    transition: transform 0.2s ease, box-shadow 0.3s ease; /* Transition for transform and box-shadow */
+}
+
+/* Define hover behavior for .cool-gradient-shadow */
+.cool-gradient-shadow:hover {
+    transform: scale(1.02); /* Slight scale-up on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow effect on hover */
+}
+
+/* Define a cool-text-highlight class for a cooler hover effect on text highlights */
+.cool-text-highlight {
+    background-color: transparent; /* Transparent background */
+    color: #023436; /* Text color */
+    border: 2px solid #037971; /* Border color */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-family: 'Fira Sans', sans-serif;
+    transition: transform 0.2s ease, border-color 0.3s ease; /* Transition for transform and border-color */
+}
+
+/* Define hover behavior for .cool-text-highlight */
+.cool-text-highlight:hover {
+    transform: scale(1.02); /* Slight scale-up on hover */
+}
+
+.cool-paragraph-hover-light {
+    background-color: #D5E6E6; /* Initial background color (lighter) */
+    color: #023436; /* Text color */
+    padding: 15px;
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom: 20px;
+    font-family: 'Fira Sans', sans-serif;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Transition for transform, box-shadow, and background-color */
+}
+
+/* Define hover behavior */
+.cool-paragraph-hover-light:hover {
+    background-color: #D5E6E6; /* New background color on hover (lighter) */
+    transform: scale(1.02); /* Slight scale-up on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow effect on hover */
+}
+
+/* Define a cool-h4 class for styling the h4 element */
+.cool-h4 {
+    font-size: 20px; /* Adjust the font size as needed */
+    display: inline-block;
+    padding: 5px 15px; /* Adjust padding for the bubble effect */
+    background-color: #037971; /* Background color */
+    color: #fff; /* Text color */
+    font-family: 'Fira Sans', sans-serif; /* Specify the font family */
+    font-weight: bold;
+    border-radius: 50px; /* Add border-radius for the bubble effect */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: transform 0.2s ease; /* Transition for transform */
+    text-align: center;
+    line-height: 1.4; /* Adjust line-height for vertical centering */
+    margin-bottom: 20px;
+}
+
+/* Apply the bubble animation on hover */
+.cool-h4:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+/* Style for h6 element */
+.cool-h6 {
+    font-size: 20px; /* Adjust the font size as needed */
+    font-weight: bold;
+    color: #fff; /* Text color */
+    margin-bottom: 10px; /* Add spacing below the h6 element */
+    background-color: rgba(3, 121, 113, 0.7); /* Semi-transparent background */
+    padding: 5px 10px; /* Add padding to the text */
+}
+
+/* Style for ul element */
+.cool-ul {
+    list-style: none; /* Remove list bullets */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+/* Style for li elements within ul */
+.cool-ul li {
+    font-size: 16px; /* Adjust the font size as needed */
+    color: #fff; /* Text color */
+    margin-bottom: 5px; /* Add spacing between list items */
+    background-color: rgba(3, 121, 113, 0.7); /* Semi-transparent background */
+    padding: 5px 10px; /* Add padding to the text */
+}
+
+
+
+
+/* CSS for fade-in animation */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 hr {
@@ -600,6 +787,22 @@ progress {
     content: "— ";
 }
 
+.image-container {
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 700px; /* Set the maximum width to 100% of its container */
+    height: auto; /* Allow the height to adjust proportionally */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .image-container img {
+        max-width: 300px; /* Remove the max-width for smaller screens */
+    }
+}
+
 .img-fluid {
     max-width: 100%;
     height: auto;
@@ -693,7 +896,24 @@ progress {
 }
 
 #map1 svg{
+    margin-left: 100px;
+    margin-right: 100px;
+}
 
+#map2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+#map2 svg{
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+#Conclusion1 .btn{
+    margin-top: -10px;
 }
 
 .col {
@@ -11400,4 +11620,22 @@ footer.footer {
 #selectDeathOptions{
     margin: 0!important;
     display: block!important;
+}
+
+#legend_map{
+    margin-bottom: 0;
+}
+
+/* Style for the fixed iframe container */
+.iframe-container {
+    width: 100%;
+    height: 870px;
+    overflow: hidden!important; /* Hide the scrollbar */
+}
+
+/* Style for the iframe itself */
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none; /* Remove iframe border if needed */
 }

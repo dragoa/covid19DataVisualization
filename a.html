@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <title>Smoothed D3.js Radar Chart</title>
+
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <!-- D3.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.3.0/d3-legend.js" charset="utf-8"></script>
+
+    <style>
+        body{
+            overflow: hidden!important; /* Hide the scrollbar */
+        }
+        .tooltip {
+            fill: #333333;
+        }
+        .label {
+            font-size: 11px; /* Adjust the font size as needed */
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="analysis5" class="fade-in">
+    <section class="features-icons bg-light">
+        <div class="col-lg-12">
+            <div class="d-flex justify-content-center">
+                <div class="form-check3 form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio6" onchange="handlePaymentChange4(event)" checked>
+                    <label class="form-check-label" for="flexRadio6">
+                        1st Wave
+                    </label>
+                </div>
+                <div class="form-check3 form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio7" onchange="handlePaymentChange4(event)">
+                    <label class="form-check-label" for="flexRadio7">
+                        2nd wave
+                    </label>
+                </div>
+                <div class="form-check3 form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadio8" onchange="handlePaymentChange4(event)">
+                    <label class="form-check-label" for="flexRadio8">
+                        3rd wave
+                    </label>
+                </div>
+            </div>
+            <div class="radarChart" style="max-height: 750px;"></div>
+        </div>
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="scripts/radarChart.js"></script>
+<script>
+
+    var margin = {top: 80, right: 180, bottom: 350, left: 180},
+        legendPosition = {x: 5, y: 25},
+        width = Math.min(700, window.innerWidth) - margin.left - margin.right,
+        height = Math.min(width, window.innerHeight - margin.top - margin.bottom);
+
+    const colors = ["#17becf", "#e377c2", "#393b79","#e7ba52", "#1f77b4", "#637939", "#8ca252","#2ca02c", "#b5cf6b", "#8c6d31", "#bd9e39", "#aec7e8", "#ff7f0e", "#ffbb78", "#98df8a",  "#ff9896", "#9467bd", "#c5b0d5","#d62728", "#8c564b", "#c49c94", "#7f7f7f"];
+    var color = d3.scale.ordinal()
+        .range(colors);
+
+    var radarChartOptions = {
+        w: width,
+        h: height,
+        margin: margin,
+        legendPosition: legendPosition,
+        maxValue: 0.5,
+        wrapWidth: 60,
+        levels: 5,
+        roundStrokes: true,
+        color: color,
+        axisName: "axis",
+        areaName: "country",
+        value: "value"
+    };
+
+    let datasets = "./assets/data/radar/radar1.json"
+    let gdpData = "./assets/data/radar/radar1_gdp.json"
+    
+    function handlePaymentChange4(event) {
+        const wave = event.target.id
+        let waveId
+
+        if(wave === "flexRadio6"){
+            datasets = "./assets/data/radar/radar1.json"
+            gdpData = "./assets/data/radar/radar1_gdp.json"
+            waveId = "1st"
+        }
+        else if(wave === "flexRadio7"){
+            datasets = "./assets/data/radar/radar2.json"
+            gdpData = "./assets/data/radar/radar2_gdp.json"
+            waveId = "2nd"
+        }
+        else if(wave === "flexRadio8"){
+            datasets = "./assets/data/radar/radar3.json"
+            gdpData = "./assets/data/radar/radar3_gdp.json"
+            waveId = "3rd"
+        }
+        else{
+            datasets = "./assets/data/radar/radar1.json"
+            gdpData = "./assets/data/radar/radar1_gdp.json"
+            waveId = "1st"
+        }
+
+        // Load the data and call the function to draw the Radar chart
+        d3.json(datasets, function (error, data) {
+            d3.json(gdpData, function (error, data2) {
+                RadarChart(".radarChart", data, data2, radarChartOptions, waveId);
+            });
+        });
+    }
+
+    // Initial load with default datasets and GDP data
+    d3.json(datasets, function (error, data) {
+        d3.json(gdpData, function (error, data2) {
+            RadarChart(".radarChart", data, data2, radarChartOptions, "1st");
+        });
+    });
+</script>
+</body>
+</html>

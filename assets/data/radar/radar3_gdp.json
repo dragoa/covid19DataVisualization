@@ -1,0 +1,37 @@
+[
+  [
+    { "country": "Ireland", "axis": "People Vaccinated per Hundred", "value": 81.78 },
+    { "country": "Ireland", "axis": "People Fully Vaccinated per Hundred", "value": 80.83 },
+    { "country": "Ireland", "axis": "Average Stringency Index", "value": 22.196018518518784 },
+    { "country": "Ireland", "axis": "Average Containment Index", "value": 36.90859259259262 },
+    { "country": "Ireland", "axis": "GDP per Capita", "value": 67335.293 }
+  ],
+  [
+    { "country": "Belgium", "axis": "People Vaccinated per Hundred", "value": 79.49 },
+    { "country": "Belgium", "axis": "People Fully Vaccinated per Hundred", "value": 78.65 },
+    { "country": "Belgium", "axis": "Average Stringency Index", "value": 25.45375925925908 },
+    { "country": "Belgium", "axis": "Average Containment Index", "value": 46.724703703704044 },
+    { "country": "Belgium", "axis": "GDP per Capita", "value": 42658.576 }
+  ],
+  [
+    { "country": "Denmark", "axis": "People Vaccinated per Hundred", "value": 81.39 },
+    { "country": "Denmark", "axis": "People Fully Vaccinated per Hundred", "value": 80.79 },
+    { "country": "Denmark", "axis": "Average Stringency Index", "value": 18.667518518518623 },
+    { "country": "Denmark", "axis": "Average Containment Index", "value": 34.00677777777785 },
+    { "country": "Denmark", "axis": "GDP per Capita", "value": 46682.515 }
+  ],
+  [
+    { "country": "Netherlands", "axis": "People Vaccinated per Hundred", "value": 72.74 },
+    { "country": "Netherlands", "axis": "People Fully Vaccinated per Hundred", "value": 68.08 },
+    { "country": "Netherlands", "axis": "Average Stringency Index", "value": 28.12975925925934 },
+    { "country": "Netherlands", "axis": "Average Containment Index", "value": 44.94329629629681 },
+    { "country": "Netherlands", "axis": "GDP per Capita", "value": 48472.545 }
+  ],
+  [
+    { "country": "Portugal", "axis": "People Vaccinated per Hundred", "value": 95.21 },
+    { "country": "Portugal", "axis": "People Fully Vaccinated per Hundred", "value": 86.59 },
+    { "country": "Portugal", "axis": "Average Stringency Index", "value": 25.899907407407394 },
+    { "country": "Portugal", "axis": "Average Containment Index", "value": 41.027222222222136 },
+    { "country": "Portugal", "axis": "GDP per Capita", "value": 27936.896 }
+  ]
+]

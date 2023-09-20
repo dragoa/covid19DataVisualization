@@ -1,38 +1,67 @@
-function drawMap(id, dataset, colorMap, year){
+function drawMap(id, dataset, wave){
 
     const map = new Map();
+    // Assuming your color scale's domain is from 0 to 100 (representing percentages)
+    // Divide the domain into 5 equal parts (0-20%, 20-40%, 40-60%, 60-80%, 80-100%)
+    const domainValues = [0, 20, 40, 60, 80, 100];
+    let colorMap = d3.scaleLinear()
+    .domain(domainValues)
+    .range(['lightgrey', '#FFB17A', '#F1FEC6', '#037971', '#023436','black']);
 
     // load both geometric and aggregated data
     Promise.all([
         d3.json("/assets/data/map/custom.geo.json"),
         d3.csv(dataset, function (d) {
             // console.log(d);
-            map.set(d.location, +d[year])
+            map.set(d.location, +d['average_stringency_containment_index'])
         })
     ]).then(function (loadData) {
 
-        var height = 670;
-        var width = document.documentElement.clientWidth / 2 - 150;
+        const margin = {top: 10, right: 100, bottom: 10, left: 100},
+            width = 1000 - margin.left - margin.right,
+            height = 800 - margin.top - margin.bottom;
 
         var mapId = document.getElementById(id.replace("#", ""))
         mapId.innerHTML = "";
 
         const svg = d3.select(id)
             .append("svg")
-            .attr("width", width)
-            .attr("height", height)
+            .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+            .attr("preserveAspectRatio", "xMidYMid meet")
+
+        // Add X axis label
+        svg.append("text")
+            .attr("class", "axis-label")
+            .attr("text-anchor", "middle")
+            .style("font-size", "20px")
+            .attr("x", width/3+20)
+            .attr("y", margin.bottom)
+            .text(`${wave} wave MAP: average between stringency and containment`)
+            .style("transform", "translate(-20px, 20px)")
+            .style("font-weight", "bold")
+            .style("font-family", "Fira Sans");
+        svg.append("text")
+            .attr("class", "axis-label")
+            .attr("text-anchor", "middle")
+            .style("font-size", "20px")
+            .attr("x", width/3+20)
+            .attr("y", margin.bottom + 25) // Adjust the 'y' position for the second line
+            .text("policies adopted against Covid-19 by all EU's countries in %")
+            .style("transform", "translate(-20px, 20px)")
+            .style("font-weight", "bold")
+            .style("font-family", "Fira Sans");
 
         // projection reflecting the Y to match d3 requirements
         let projection = d3.geoMercator()
-            .center([7, 52])
+            .center([7, 56])
             .scale([width / 1.3])
             .translate([width / 2, height / 2])
 
         const color = colorMap
-        //Legend(d3.scaleThreshold([39, 100, 300, 500, 1000, 2000, 3024], d3.schemeGreens[8]), id)
+        Legend(colorMap, "#legend_map")
 
         let topo = loadData[0]
-        //projection.fitSize([width_1, height_1], topo);
+        // projection.fitSize([width, height], topo);
 
         //draw the map
         svg.append("g")
@@ -75,13 +104,12 @@ function drawMap(id, dataset, colorMap, year){
 
                 const percValue = Math.round(map.get(d.properties.name));
                 let tooltipText;
-                console.log(percValue)
+                // console.log(percValue)
                 if (percValue !== 0 && percValue) {
-                    tooltipText = "The " + year.replace(/_/g, " ") + "<br> is " + percValue + "%";
+                    tooltipText = "The policies adopted <br>were " + percValue + "% strict";
                 } else if (isNaN(percValue)){
                     tooltipText = "Missing data";
                 }
-                console.log(tooltipText)
 
                 tooltip.html(d.properties.name + ": " + tooltipText)
                     .style("visibility", "visible");
@@ -97,13 +125,28 @@ function drawMap(id, dataset, colorMap, year){
                     .style("stroke", "black")
                 tooltip.html(``).style("visibility", "hidden");
             });
-
     })
 }
 
-drawMap("#map1", "assets/data/map/merged_data.csv", d => d3.interpolateOrRd(d / 100), "average_stringency_index")
+drawMap("#map1", "assets/data/map/map_tot_stringency1.csv", "1st")
 
-function handlePaymentChange(event) {
-    var selectMapOption = event.target.value;
-    drawMap("#map1", "assets/data/map/merged_data.csv", d => d3.interpolateOrRd(d/100), selectMapOption)
+function handlePaymentChange2(event) {
+    const wave = event.target.id
+
+    if(wave === "flexRadio1"){
+        drawStackedBar("#barplot1", "/assets/data/barplot/average_1.csv", "1st")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv",  "1st")
+    }
+    else if(wave === "flexRadio2"){
+        drawStackedBar("#barplot1", "/assets/data/barplot/average_2.csv", "2nd")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency2.csv", "2nd")
+    }
+    else if(wave === "flexRadio3"){
+        drawStackedBar("#barplot1", "/assets/data/barplot/average_3.csv", "3rd")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency3.csv", "3rd")
+    }
+    else{
+        drawStackedBar("#barplot1", "/assets/data/barplot/average_1.csv", "1st")
+        drawMap("#map1", "/assets/data/map/map_tot_stringency1.csv", "1st")
+    }
 }
